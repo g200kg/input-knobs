@@ -7,7 +7,7 @@
 [Demo Page](https://g200kg.github.io/input-knobs/)
 
 ## Features
-input-knobs.js is a Javascript library for Rotating Knob / Toggle Switch / RadioButton style GUI widgets.
+input-knobs.js is a Javascript library for Rotating Knob / Toggle Switch / Radio Button style GUI widgets.
 This is a sub-set of "[webaudio-controls](https://github.com/g200kg/webaudio-controls)" and simply replace the appearance of &lt;input/&gt; tags to rotating knobs or switches.
 
 | Tag                                                 | Change to     |
@@ -30,6 +30,18 @@ This is a sub-set of "[webaudio-controls](https://github.com/g200kg/webaudio-con
    ```
  *  Add class 'input-knob' to your 'type=range' slider tag or 'input-switch' to 'type=checkbox' / 'type=radio' button tags
  * Some optional attributes (data-*) are available for customize
+
+## Operation
+
+There are some tips for knob operation :
+
+| Operation      | Description      |
+|----------------|------------------|
+| Mouse dragging | Upward / Right for increase value,<br/> Downward / Left for decrease value  |
+| ShiftKey + dragging | Fine adjustment, 1/5 sensitivity to mouse movement |
+| Mouse Wheel | Upward : increase value <br/> Downward : descrease value |
+| ShiftKey + Mouse Wheel |  Fine adjustment, 1/5 sensitivity to mouse movement |
+| Keyboard<br/>(after focused) | Up / Right arrow : increment value<br/>Down / Left arrow : decrement value |
 
 ## Attributes
 
