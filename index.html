@@ -1,42 +1,42 @@
 <!doctype html>
 <html>
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	<script src="input-knobs.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src="input-knobs.js"></script>
 <style>
 body{
-	font-family: 'Open Sans', sans-serif;
-	background:#c0c8f4;
-	color:#000;
-	margin:0;
-	padding:0;
+  font-family: 'Open Sans', sans-serif;
+  background:#c0c8f4;
+  color:#000;
+  margin:0;
+  padding:0;
 }
 h1{
-	background: #56d;
-	color:#eef;
-	padding:15px 40px;
-	margin:0 0 20px 0;
+  background: #56d;
+  color:#eef;
+  padding:15px 40px;
+  margin:0 0 20px 0;
 }
 h2,h3,h4{
-	color:#228;
+  color:#228;
 }
 #contents {
-	background:#abf;
-	padding:10px 40px;
-	margin:0px auto;
+  background:#abf;
+  padding:10px 40px;
+  margin:0px auto;
 }
 table{
-	border:1px solid #88d;
-	width:80%;
+  border:1px solid #88d;
+  width:80%;
 }
 td,th{
-	border:1px solid #88d;
-	padding:8px;
+  border:1px solid #88d;
+  padding:8px;
 }
 hr{
-	height:4px;
-	background:#88d;
-	border:none;
+  height:4px;
+  background:#88d;
+  border:none;
 }
 </style>
 </head>
@@ -51,115 +51,126 @@ hr{
 <hr/>
 <div id="contents">
 <h4>GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://github.com/g200kg/input-knobs</a></h4>
-	<h2>Features</h2>
-	<p><b>input-knobs.js</b> is a Javascript library for Rotating Knob / Toggle Switch / RadioButton style GUI widgets.
-		This is a sub-set of "<a href="https://github.com/g200kg/webaudio-controls">webaudio-controls</a>"
-		and simply replace the appearance of &lt;input/&gt; tags to rotating knobs or switches.
-	</p>
-	<table>
-		<tr><th style="width:60%">Tag</th><th>Change to </th></tr>
-		<tr><td>&lt;input type="range" class="input-knob"/&gt;</td><td>Ratating Knob</td></tr>
-		<tr><td>&lt;input type="checkbox" class="input-switch"/&gt;</td><td>Toggle Switch</td></tr>
-		<tr><td>&lt;input type="radio" class="input-switch"/&gt;</td><td>Radio Button</td></tr>
-	</table>
-	<ul>
-		<li>Easy to use by place and load just one file `input-knobs.js`.</li>
-		<li>Compatible with Chrome / Firefox / Safari / Edge.</li>
-		<li>Lightweighted. No other libraries are required.</li>
-		<li>'input' and 'change' events are fired same as normal input tags.</li>
-		<li>Work normal even under 'file:///' protocol.</li>
-	</ul>
-	<h2>Usage</h2>
-	<ul>
-		<li>Place `input-knobs.js` to appropriate folder</li>
-		<li>Load `input-knobs.js` :
-			<code>
-				&lt;script src="input-knobs.js"&gt;&lt;/script&gt;
-			</code>
-		</li>
-		<li>Add class 'input-knob' to your 'type=range' slider tag or 'input-switch' to 'type=checkbox' / 'type=radio' button tags</li>
-		<li>Some optional attributes (data-*) are available for customize</li>
-	</ul>
-	<hr/>
-	<h2>Attributes</h2>
-	<table>
-		<tr><th style="width:20%">Attribute</th><th>Description</th></tr>
-		<tr><th>data-diameter = "nnn"</th>
-			<td>Set the diameter of the knob or switch in 'px'. In default, 64 for knobs and 32 for switches.</td></tr>
-		<tr><th>data-src = "Image URL"</th>
-			<td>Use external image for the knobs/switches.<br/><br/>
-				For Knobs, the image should be single knob-image that pointing upward (12 O'clock),
-				or a vertically stitched knob-images that represent rotation of the knob frame by frame.<br/><br/>
-				For Switches, this image should be a vertically stitched Off state and On state image.<br/><br/>
-				If no image is supplied, input-knobs uses knob/switch images embedded inside (black body and red indicator)</td></tr>
-		<tr><th>data-sprites = "nn"</th>
-			<td>For Knob only. If you use stitched knob-image, this attribute should be the number of frames.
-				If this number is 2 or more, input-knobs uses frame switching procedure instead of image rotation.</td></tr>
-	</table>
-	<hr/>
-	<h2>Knob Samples</h2>
-	<h4>Simplest:</h4>
+  <h2>Features</h2>
+  <p><b>input-knobs.js</b> is a Javascript library for Rotating Knob / Toggle Switch / RadioButton style GUI widgets.
+    This is a sub-set of "<a href="https://github.com/g200kg/webaudio-controls">webaudio-controls</a>"
+    and simply replace the appearance of &lt;input/&gt; tags to rotating knobs or switches.
+  </p>
+  <table>
+    <tr><th style="width:60%">Tag</th><th>Change to </th></tr>
+    <tr><td>&lt;input type="range" class="input-knob"/&gt;</td><td>Ratating Knob</td></tr>
+    <tr><td>&lt;input type="checkbox" class="input-switch"/&gt;</td><td>Toggle Switch</td></tr>
+    <tr><td>&lt;input type="radio" class="input-switch"/&gt;</td><td>Radio Button</td></tr>
+  </table>
+  <ul>
+    <li>Easy to use by place and load just one file `input-knobs.js`.</li>
+    <li>Compatible with Chrome / Firefox / Safari / Edge.</li>
+    <li>Lightweighted. No other libraries are required.</li>
+    <li>'input' and 'change' events are fired same as normal input tags.</li>
+    <li>Work normal even under 'file:///' protocol.</li>
+  </ul>
+  <h2>Usage</h2>
+  <ul>
+    <li>Place `input-knobs.js` to appropriate folder</li>
+    <li>Load `input-knobs.js` :
+      <code>
+        &lt;script src="input-knobs.js"&gt;&lt;/script&gt;
+      </code>
+    </li>
+    <li>Add class 'input-knob' to your 'type=range' slider tag or 'input-switch' to 'type=checkbox' / 'type=radio' button tags</li>
+    <li>Some optional attributes (data-*) are available for customize</li>
+  </ul>
+  <hr/>
+  <h2>Operation</h2>
+  <p>There are some tips for knob operation :</p>
+  <table>
+  <tr><th>Operation</th><th>Description</th></tr>
+  <tr><th>Mouse dragging</th><td>Upward / Right for increase value,<br/> Downward / Left for decrease value</td></tr>
+  <tr><th>ShiftKey + dragging</th><td>Fine adjustment, 1/5 sensitivity to mouse movement</td></tr>
+  <tr><th>Mouse Wheel</th><td>Upward : increase value <br/> Downward : descrease value</td></tr>
+  <tr><th>ShiftKey + Mouse Wheel</th><td>Fine adjustment, 1/5 sensitivity to mouse movement</td></tr>
+  <tr><th>Keyboard<br/>(after focused)</th><td>Up / Right arrow : increment value<br/>Down / Left arrow : decrement value</td></tr>
+  </table>
+
+  <h2>Attributes</h2>
+  <table>
+    <tr><th style="width:20%">Attribute</th><th>Description</th></tr>
+    <tr><th>data-diameter = "nnn"</th>
+      <td>Set the diameter of the knob or switch in 'px'. In default, 64 for knobs and 32 for switches.</td></tr>
+    <tr><th>data-src = "Image URL"</th>
+      <td>Use external image for the knobs/switches.<br/><br/>
+        For Knobs, the image should be single knob-image that pointing upward (12 O'clock),
+        or a vertically stitched knob-images that represent rotation of the knob frame by frame.<br/><br/>
+        For Switches, this image should be a vertically stitched Off state and On state image.<br/><br/>
+        If no image is supplied, input-knobs uses knob/switch images embedded inside (black body and red indicator)</td></tr>
+    <tr><th>data-sprites = "nn"</th>
+      <td>For Knob only. If you use stitched knob-image, this attribute should be the number of frames.
+        If this number is 2 or more, input-knobs uses frame switching procedure instead of image rotation.</td></tr>
+  </table>
+  <hr/>
+  <h2>Knob Samples</h2>
+  <h4>Simplest:</h4>
 <code><pre>&lt;input type="range" class="input-knob"/&gt;</pre></code>
-	<input type="range" class="input-knob"/>
-	<hr/>
-	<h4>Diameter Variation:</h4>
+  <input type="range" class="input-knob"/>
+  <hr/>
+  <h4>Diameter Variation:</h4>
 <code><pre>
 &lt;input type="range" class="input-knob" data-diameter="120"/&gt;
 &lt;input type="range" class="input-knob" data-diameter="60"/&gt;
 &lt;input type="range" class="input-knob" data-diameter="32"/&gt;
 </pre></code>
-	<input type="range" class="input-knob" data-diameter="120"/>
-	<input type="range" class="input-knob" data-diameter="60"/>
-	<input type="range" class="input-knob" data-diameter="32"/>
-	<hr/>
-	<h4>With External Image</h4>
+  <input type="range" class="input-knob" data-diameter="120"/>
+  <input type="range" class="input-knob" data-diameter="60"/>
+  <input type="range" class="input-knob" data-diameter="32"/>
+  <hr/>
+  <h4>With External Image</h4>
 <code><pre>
 &lt;input type="range" class="input-knob" data-diameter="120" data-src="./knob70.png" data-sprites="101"/&gt;
 &lt;input type="range" class="input-knob" data-diameter="60" data-src="./knob70.png" data-sprites="101"/&gt;
 &lt;input type="range" class="input-knob" data-diameter="32" data-src="./knob70.png" data-sprites="101"/&gt;
 </pre></code>
-	<input type="range" class="input-knob" data-diameter="120" data-src="./knob70.png" data-sprites="101"/>
-	<input type="range" class="input-knob" data-diameter="60" data-src="./knob70.png" data-sprites="101"/>
-	<input type="range" class="input-knob" data-diameter="32" data-src="./knob70.png" data-sprites="101"/>
-	<hr/>
-	<h4>Events handling</h4>
+  <input type="range" class="input-knob" data-diameter="120" data-src="./knob70.png" data-sprites="101"/>
+  <input type="range" class="input-knob" data-diameter="60" data-src="./knob70.png" data-sprites="101"/>
+  <input type="range" class="input-knob" data-diameter="32" data-src="./knob70.png" data-sprites="101"/>
+  <hr/>
+  <h4>Events handling</h4>
 <p>'input' events are fired while dragging, 'change' event is fired when mouseup.<br/>
 Usual attributes like 'min', 'max', 'step' are also effective.</p>
 <code><pre>&lt;input type="range" class="input-knob" min="0" max="10" step="0.1" oninput="inputHandler" onchange="changeHandler"/&gt;</pre></code>
-	<textarea id="log" cols="50" rows="10"></textarea><button onclick="log.value=''">Clear Log</button>
-	<input type="range" class="input-knob" min="0" max="10" step="0.1" oninput="log.value+='\'input\' this.value='+this.value+'\n'" onchange="log.value+='\'change\' this.value='+this.value+'\n'"/>
-	<hr/>
-	<h2>Switch Samples</h2>
-	<h4>Simplest</h4>
+  <textarea id="log" cols="50" rows="10"></textarea><button onclick="log.value=''">Clear Log</button>
+  <input type="range" class="input-knob" min="0" max="10" step="0.1" oninput="log.value+='\'input\' this.value='+this.value+'\n'" onchange="log.value+='\'change\' this.value='+this.value+'\n'"/>
+  <hr/>
+  <h2>Switch Samples</h2>
+  <h4>Simplest</h4>
 <code><pre>&lt;input type="checkbox" class="input-switch"/&gt;</pre></code>
-	<input type="checkbox" class="input-switch"/>
-	<hr/>
-	<h4>Diameter Variation</h4>
+  <input type="checkbox" class="input-switch"/>
+  <hr/>
+  <h4>Diameter Variation</h4>
 <code><pre>
 &lt;input type="checkbox" class="input-switch" data-diameter="64"/&gt;
 &lt;input type="checkbox" class="input-switch" data-diameter="32"/&gt;
 &lt;input type="checkbox" class="input-switch" data-diameter="16"/&gt;
 </pre></code>
-	<input type="checkbox" class="input-switch" data-diameter="64"/>
-	<input type="checkbox" class="input-switch" data-diameter="32"/>
-	<input type="checkbox" class="input-switch" data-diameter="16"/>
-	<hr/>
-	<h4>With External Image</h4>
+  <input type="checkbox" class="input-switch" data-diameter="64"/>
+  <input type="checkbox" class="input-switch" data-diameter="32"/>
+  <input type="checkbox" class="input-switch" data-diameter="16"/>
+  <hr/>
+  <h4>With External Image</h4>
 <code><pre>
 &lt;input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/&gt;
 &lt;input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="50"/&gt;
 &lt;input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="30"/&gt;
 </pre></code>
-	<input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/>
-	<input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="50"/>
-	<input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="30"/>
+  <input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/>
+  <input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="50"/>
+  <input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="30"/>
 <hr/>
-	<h4>Event Handling</h4>
-	<code><pre>&lt;input type="range" class="input-knob" oninput="inputHandler" onchange="changeHandler"/&gt;</pre></code>
-		<textarea id="log2" cols="50" rows="10"></textarea><button onclick="log2.value=''">Clear Log</button>
-		<input type="checkbox" class="input-switch" onchange="log2.value+='\'change\' this.checked='+this.checked+'\n'"/>
+  <h4>Event Handling</h4>
+  <code><pre>&lt;input type="range" class="input-knob" oninput="inputHandler" onchange="changeHandler"/&gt;</pre></code>
+    <textarea id="log2" cols="50" rows="10"></textarea><button onclick="log2.value=''">Clear Log</button>
+    <input type="checkbox" class="input-switch" onchange="log2.value+='\'change\' this.checked='+this.checked+'\n'"/>
 <hr/>
-	<h4>Radio Buttons</h4>
+  <h4>Radio Buttons</h4>
 <code><pre>
 &lt;input type="radio" name="group1" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/&gt;
 &lt;input type="radio" name="group1" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/&gt;
