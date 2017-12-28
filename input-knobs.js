@@ -44,6 +44,7 @@ window.addEventListener("load",function(){
   }\
 ";
   document.head.appendChild(styles);
+  var wheeldir=(navigator.platform.indexOf("Win")>=0);
   var elem=document.querySelectorAll("input.input-knob");
   for(let i=elem.length-1;i>=0;--i){
     let el=elem[i];
@@ -99,7 +100,9 @@ window.addEventListener("load",function(){
       el.redraw();
     };
     el.wheel=(ev)=>{
-      let delta=ev.deltaY>0?-el.valrange.step:el.valrange.step;
+      let delta=ev.deltaY>0?el.valrange.step:-el.valrange.step;
+      if(wheeldir)
+        delta=-delta;
       if(!ev.shiftKey)
         delta*=5;
       el.setValue(+el.value+delta);
