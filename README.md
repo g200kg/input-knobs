@@ -4,7 +4,9 @@
 
 ---
 
-[Demo Page](https://g200kg.github.io/input-knobs/)
+## [input-knobs.js Front Page](https://g200kg.github.io/input-knobs/)
+
+---
 
 ## Features
 input-knobs.js is a Javascript library for Rotating Knob / Toggle Switch / Radio Button style GUI widgets.
