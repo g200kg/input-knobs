@@ -1,29 +1,50 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="input-knobs.js"></script>
 <style>
 body{
   font-family: 'Open Sans', sans-serif;
-  background:#c0c8f4;
-  color:#000;
+  background:#448;
   margin:0;
   padding:0;
 }
-h1{
+#contents {
+  background:#c0c8f4;
+  margin:0 auto;
+  padding:0;
+  width:85%;
+}
+#header{
   background: #56d;
-  color:#eef;
-  padding:15px 40px;
-  margin:0 0 20px 0;
+  color:#fff;
+  padding:0;
+  margin:0px 0 10px 0px;
+  width:100%;
+  height:80px;
+  box-shadow:0px 2px 2px rgba(0,0,0,0.5);
+}
+#header img{
+  margin:0px 20px 0px 0px;
+  padding:0;
+  height:80px;
+  vertical-align: top;
+}
+#title{
+  display:inline-block;
+}
+#title h1{
+  font-size:22px;
+  line-height: 20px;
+}
+#main{
+  padding:0px 40px;
+  margin:20px auto;
 }
 h2,h3,h4{
   color:#228;
-}
-#contents {
-  background:#abf;
-  padding:10px 40px;
-  margin:0px auto;
 }
 table{
   border:1px solid #88d;
@@ -38,62 +59,114 @@ hr{
   background:#88d;
   border:none;
 }
+code>pre{
+  background:#ddf;
+  font-size:14px;
+  padding:8px;
+  border:1px solid #88a;
+}
+textarea{
+  resize:none;
+}
 </style>
 </head>
 <body>
-<h1>input-knobs.js</h1>
-<div style="margin-left:20px">
-<input type="range" class="input-knob"/> <input type="range" class="input-knob"/> <input type="range" class="input-knob"/>
-<input type="range" class="input-knob" data-src="./knob70.png" data-sprites="101"/> <input type="range" class="input-knob" data-src="./knob70.png" data-sprites="101"/> <input type="range" class="input-knob" data-src="./knob70.png" data-sprites="101"/>
-<input type="checkbox" class="input-switch"/> <input type="checkbox" class="input-switch"/> <input type="checkbox" class="input-switch"/>
-<input type="radio" name="groupA" class="input-switch" data-src="./switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./switch_offon.png" data-diameter="50"/>
-</div>
-<hr/>
 <div id="contents">
-<h4>GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://github.com/g200kg/input-knobs</a></h4>
+  <div id="header">
+    <a href="https://www.g200kg.com/"><img src="./images/g200kg160x80.png"/></a>
+    <div id="title">
+      <h1>input-knobs.js
+        <span style="font-size:12px"><br/>Simple Javascript Library for Knobs</span>
+      </h1>
+    </div>
+  </div>
+  <div style="margin-left:10px">
+    <button onclick="SetLang('en')" style="width:80px">English</button> | <button onclick="SetLang('ja')" style="width:80px">Japanese</button>
+  </div>
+  <div id="main">
+
+  <div style="margin-left:20px">
+  <input type="range" class="input-knob"/> <input type="range" class="input-knob"/> <input type="range" class="input-knob"/>
+  <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/> <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/> <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/>
+  <input type="checkbox" class="input-switch"/> <input type="checkbox" class="input-switch"/> <input type="checkbox" class="input-switch"/>
+  <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/>
+  </div>
+<h4>'input-knob.js' is here : <a href="input-knobs.js">input-knobs.js</a><br/>
+GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://github.com/g200kg/input-knobs</a></h4>
   <h2>Features</h2>
-  <p><b>input-knobs.js</b> is a Javascript library for Rotating Knob / Toggle Switch / Radio Button style GUI widgets.
+  <p lang="en"><b>input-knobs.js</b> is a Javascript library for Rotating Knob / Toggle Switch / Radio Button style GUI widgets.
     This is a sub-set of "<a href="https://github.com/g200kg/webaudio-controls">webaudio-controls</a>"
     and simply replace the appearance of &lt;input/&gt; tags to rotating knobs or switches.
   </p>
+  <p lang="ja"><b>input-knobs.js</b> は回転するノブ、トグルスイッチ、ラジオボタン型の GUI ウィジェット向けの Javascript ライブラリです。
+    これは<a href="https://github.com/g200kg/webaudio-controls">webaudio-controls</a>"のサブセットで、単純に &lt;input/&gt; タグの外見を
+    回転するノブやスイッチに置き換えます。
+  </p>
+  <br/>
   <table>
     <tr><th style="width:60%">Tag</th><th>Change to </th></tr>
     <tr><td>&lt;input type="range" class="input-knob"/&gt;</td><td>Rotating Knob</td></tr>
     <tr><td>&lt;input type="checkbox" class="input-switch"/&gt;</td><td>Toggle Switch</td></tr>
     <tr><td>&lt;input type="radio" class="input-switch"/&gt;</td><td>Radio Button</td></tr>
   </table>
-  <ul>
+  <ul lang="en">
     <li>Easy to use by place and load just one file `input-knobs.js`.</li>
     <li>Compatible with Chrome / Firefox / Safari / Edge.</li>
     <li>Lightweighted. No other libraries are required.</li>
     <li>'input' and 'change' events are fired same as normal input tags.</li>
     <li>Work even under 'file:///' protocol.</li>
   </ul>
+  <ul lang="ja">
+    <li>単一のファイル `input-knobs.js` を配置して読み込むだけで簡単に使用できます</li>
+    <li>Chrome / Firefox / Safari / Edge で動作します</li>
+    <li>軽量です。他のライブラリは必要としません</li>
+    <li>通常の input タグと同様に 'input' および 'change' イベントを発火します</li>
+    <li>'file:///' プロトコル上でも使用可能です</li>
+  </ul>
   <h2>Usage</h2>
-  <ul>
+  <ul lang="en">
     <li>Place `input-knobs.js` to appropriate folder</li>
     <li>Load `input-knobs.js` :
       <code>
         &lt;script src="input-knobs.js"&gt;&lt;/script&gt;
       </code>
     </li>
-    <li>Add class 'input-knob' to your 'input type=range' tag or 'input-switch' to 'input type=checkbox' / 'input type=radio' tags</li>
+    <li>Add class 'input-knob' to your 'input type=range' tag, or 'input-switch' to 'input type=checkbox' / 'input type=radio' tags</li>
     <li>Some optional attributes (data-*) are also available for customize</li>
+  </ul>
+  <ul lang="ja">
+    <li>`input-knobs.js` を適切なフォルダに配置してください</li>
+    <li>`input-knobs.js` をロードします :
+      <code>
+        &lt;script src="input-knobs.js"&gt;&lt;/script&gt;
+      </code>
+    </li>
+    <li>'input type=range' タグにクラス 'input-knob' を追加、または 'input type=checkbox' / 'input type=radio' タグにクラス 'input-switch' を追加します</li>
+    <li>更に幾つかの属性 (data-*) を追加してカスタマイズする事もできます</li>
   </ul>
   <hr/>
   <h2>Operation</h2>
-  <p>There are some tips for knob operation :</p>
-  <table>
+  <p lang="en">There are some tips for knob operation :</p>
+  <p lang="ja">ノブの操作方法に幾つかの Tips があります :</p>
+  <table lang="en">
   <tr><th>Operation</th><th>Description</th></tr>
   <tr><th>Mouse dragging</th><td>Upward / Right for increase value,<br/> Downward / Left for decrease value</td></tr>
   <tr><th>ShiftKey + dragging</th><td>Fine adjustment, 1/5 sensitivity to mouse movement</td></tr>
   <tr><th>Mouse Wheel</th><td>Upward : increase value <br/> Downward : descrease value</td></tr>
-  <tr><th>ShiftKey + Mouse Wheel</th><td>Fine adjustment, 1/5 sensitivity to mouse movement</td></tr>
+  <tr><th>ShiftKey + Mouse Wheel</th><td>Fine adjustment, 1/5 sensitivity to wheel movement</td></tr>
   <tr><th>Keyboard<br/>(after focused)</th><td>Up / Right arrow : increment value<br/>Down / Left arrow : decrement value</td></tr>
+  </table>
+  <table lang="ja">
+  <tr><th>操作</th><th>説明</th></tr>
+  <tr><th>マウスドラッグ</th><td>上または右方向で値を増加<br/>下または左方向で値を減少</td></tr>
+  <tr><th>Shiftキー + マウスドラッグ</th><td>微調整。マウスの移動に対する感度が 1/5 になります</td></tr>
+  <tr><th>マウスホイール</th><td>上方向 : 値を増加 <br/>下方向 : 値を減少</td></tr>
+  <tr><th>Shiftキー + マウスホイール</th><td>微調整。ホイールの動きに対する感度が 1/5 になります</td></tr>
+  <tr><th>キーボード<br/>(フォーカスを当てた後)</th><td>カーソル上または右 : 値を1ステップ増加<br/>カーソル下または左 : 値を1ステップ減少</td></tr>
   </table>
 
   <h2>Attributes</h2>
-  <table>
+  <table lang="en">
     <tr><th style="width:20%">Attribute</th><th>Description</th></tr>
     <tr><th>data-diameter = "nnn"</th>
       <td>Set the diameter of the knob or switch in 'px'. In default, 64 for knobs and 32 for switches.</td></tr>
@@ -104,16 +177,45 @@ hr{
         For Switches, this image should be a vertically stitched Off state and On state image.<br/><br/>
         If no image is supplied, input-knobs uses knob/switch images embedded inside (black body and red indicator)</td></tr>
     <tr><th>data-sprites = "nn"</th>
-      <td>For Knob only. If you use stitched knob-image, this attribute should be the number of frames.
+      <td>For Knob only. If you use frame stitched knob-image, this attribute should be the number of frames.
         If this number is 2 or more, input-knobs uses frame switching procedure instead of image rotation.</td></tr>
+  </table>
+  <table lang="ja">
+    <tr><th style="width:20%">属性</th><th>説明</th></tr>
+    <tr><th>data-diameter = "nnn"</th>
+      <td>ノブ、スイッチのサイズ(直径) を 'px' で指定します。デフォルトではノブは 64、スイッチは 32 になっています。</td></tr>
+    <tr><th>data-src = "Image URL"</th>
+      <td>ノブ、スイッチに外部の画像を使用します。<br/><br/>
+        ノブの場合、この画像は真上(12時の方向)を指した単一の画像、または回転をあらわすコマ毎の画像を縦方向に繋げた画像です。
+        <br/><br/>
+        スイッチの場合、この画像はオフ状態とオン状態の画像を縦方向に繋げた画像でなくてはなりません。<br/><br/>
+        画像が指定されない場合は、input-knobs は内部に保持しているノブ/スイッチの画像(黒い本体に赤いインジケータ)を使用します。</td></tr>
+    <tr><th>data-sprites = "nn"</th>
+      <td>ノブの場合のみ使用します。
+        ノブの画像にフレームを繋いだ画像を使用する場合、この属性はフレームの数を指定しなくてはなりません。
+        この数が2以上の場合に input-knobs は1枚の画像の回転させるのではなく、コマの切り替えによる動作を行います。</td></tr>
   </table>
   <hr/>
   <h2>Knob Samples</h2>
+  <input type="range"/><br/>
+  <p lang="en">This is a usual &lt;input type="range"/&gt;.
+    class 'input-knob' makes change this to rotating knob.</p>
+  <p lang="ja">これが通常の &lt;input type="range"/&gt; です。
+    'input-knob' クラスはこれを回転するノブに置き換えます。</p>
+  <hr/>
   <h4>Simplest:</h4>
+  <p lang="en">Just add the class "input-knob" to &lt;input type="range"&gt; tag.
+    This behave same as normal &lt;input type="range"&gt; tag except for appearance and mouse operation.
+  </p>
+  <p lang="ja">単に "input-knob" クラスを &lt;input type="range"&gt; タグに追加します。
+    これは見た目とマウス操作方法以外は通常の &lt;input type="range"&gt; タグと同様の動作をします。
+  </p>
 <code><pre>&lt;input type="range" class="input-knob"/&gt;</pre></code>
   <input type="range" class="input-knob"/>
   <hr/>
   <h4>Diameter Variation:</h4>
+  <p lang="en">You can customize the knob size by attribute 'data-diameter'.</p>
+  <p lang="ja">ノブのサイズを 'data-diameter' 属性でカスタマイズする事ができます。</p>
 <code><pre>
 &lt;input type="range" class="input-knob" data-diameter="120"/&gt;
 &lt;input type="range" class="input-knob" data-diameter="60"/&gt;
@@ -123,29 +225,82 @@ hr{
   <input type="range" class="input-knob" data-diameter="60"/>
   <input type="range" class="input-knob" data-diameter="32"/>
   <hr/>
-  <h4>With External Image</h4>
+  <h4>With External Knob Image</h4>
+<img src="./images/KnobMan96.png" width="60" style="float:left;border:2px solid #66d;margin-right:20px"/>
+<p lang="en">The knob image can be specified with 'data-src' attribute.<br/>
+  This image is a simple single knob-image that pointing upward.<br/>
+  Image is automatically resized to 'data-diameter' size.
+</p>
+<p lang="ja">'data-src' 属性でノブの画像を指定する事ができます。<br/>
+  この画像は単に真上を向いた1枚のノブ画像です。<br/>
+  画像は自動的に 'data-diameter' の大きさにリサイズされます
+</p>
+<br clear="both"/>
 <code><pre>
-&lt;input type="range" class="input-knob" data-diameter="120" data-src="./knob70.png" data-sprites="101"/&gt;
-&lt;input type="range" class="input-knob" data-diameter="60" data-src="./knob70.png" data-sprites="101"/&gt;
-&lt;input type="range" class="input-knob" data-diameter="32" data-src="./knob70.png" data-sprites="101"/&gt;
+&lt;input type="range" class="input-knob" data-diameter="96" data-src="./images/KnobMan96.png"/&gt;
 </pre></code>
-  <input type="range" class="input-knob" data-diameter="120" data-src="./knob70.png" data-sprites="101"/>
-  <input type="range" class="input-knob" data-diameter="60" data-src="./knob70.png" data-sprites="101"/>
-  <input type="range" class="input-knob" data-diameter="32" data-src="./knob70.png" data-sprites="101"/>
+  <input type="range" class="input-knob" data-diameter="96" data-src="./images/KnobMan96.png"/>
   <hr/>
-  <h4>Events handling</h4>
-<p>'input' events are fired while dragging, 'change' event is fired when mouseup.<br/>
-Usual attributes like 'min', 'max', 'step' are also effective.</p>
-<code><pre>&lt;input type="range" class="input-knob" min="0" max="10" step="0.1" oninput="inputHandler" onchange="changeHandler"/&gt;</pre></code>
-  <textarea id="log" cols="50" rows="10"></textarea><button onclick="log.value=''">Clear Log</button>
-  <input type="range" class="input-knob" min="0" max="10" step="0.1" oninput="log.value+='\'input\' this.value='+this.value+'\n'" onchange="log.value+='\'change\' this.value='+this.value+'\n'"/>
+  <h4>With Multi Frame External Image</h4>
+  <div style="margin-right:20px;float:left;height:200px;width:120px;overflow-y:scroll;border:1px solid #88d"><img src="./images/knob70.png" style="border:2px solid #66d;margin:3px;"/></div>
+  <p lang="en">The image specified with 'data-src' attribute can be a vertically stitched multi-frame image that represent knob rotation.
+    In this case, 'data-sprites' attribute should be the number of frames.<br/><br/>
+    JKnobMan / WebKnobMan may be a help for making these stitched images,
+  </p>
+  <p lang="ja">'data-src' 属性で指定する画像として、ノブの回転をあらわす複数のフレームを繋いだ画像を使用できます。
+    この場合、'data-sprites' 属性でフレームの数を指定します。<br/><br/>
+    このフレームを接続した画像を作成するには JKnobMan / WebKnobMan が役立つかも知れません。
+  </p>
+  <ul lang="en">
+    <li><a href="http://www.g200kg.com/en/software/knobman.html">JKnobMan</a> -- Java based Knob image creation tool.</li>
+    <li><a href="http://www.g200kg.com/en/webknobman/">WebKnobMan</a> -- WebApp version of the JknobMan</li>
+    <li><a href="http://www.g200kg.com/en/webknobman/gallery.php">KnobGallery</a> -- knob data sharing space</li>
+  </ul>
+  <ul lang="ja">
+    <li><a href="http://www.g200kg.com/en/software/knobman.html">JKnobMan</a> -- Java 版ノブ画像作成ツール</li>
+    <li><a href="http://www.g200kg.com/en/webknobman/">WebKnobMan</a> -- JKnobMan の WebApp 版</li>
+    <li><a href="http://www.g200kg.com/en/webknobman/gallery.php">KnobGallery</a> -- ノブデータのシェアリングスペース</li>
+  </ul>
+  <br clear="both"/>
+<code><pre>
+&lt;input type="range" class="input-knob" data-diameter="120" data-src="./images/knob70.png" data-sprites="101"/&gt;
+&lt;input type="range" class="input-knob" data-diameter="60" data-src="./images/knob70.png" data-sprites="101"/&gt;
+&lt;input type="range" class="input-knob" data-diameter="32" data-src="./images/knob70.png" data-sprites="101"/&gt;
+</pre></code>
+  <input type="range" class="input-knob" data-diameter="120" data-src="./images/knob70.png" data-sprites="101"/>
+  <input type="range" class="input-knob" data-diameter="60" data-src="./images/knob70.png" data-sprites="101"/>
+  <input type="range" class="input-knob" data-diameter="32" data-src="./images/knob70.png" data-sprites="101"/>
+  <hr/>
+  <h4>Events Handling</h4>
+<p lang="en">'input' events are fired while dragging, 'change' event is fired when mouseup.<br/>
+Usual attributes like 'min', 'max', 'step' are also effective.
+</p>
+<p lang="ja">ドラッグ中は 'input' イベントが発火し、mouseup の時に 'change' イベントが発火します。<br/>
+'min'、'max'、'step'　等の通常の属性も有効です。
+</p>
+<code><pre>&lt;input type="range" class="input-knob" min="0" max="10" step="0.1"
+   oninput="inputEventHandler(this)" onchange="changeEventHandler(this)"/&gt;</pre></code>
+  <textarea id="log1" cols="50" rows="10"></textarea>
+  <input type="range" class="input-knob" min="0" max="10" step="0.1" oninput="addText(log1,'\'input\' this.value='+this.value+'\n')" onchange="addText(log1,'\'change\' this.value='+this.value+'\n')"/>
   <hr/>
   <h2>Switch Samples</h2>
+  <input type="checkbox"/>
+  <p lang="en">This is a usual &lt;input type="checkbox"/&gt;.
+    class 'input-switch' makes this to a toggle switch.
+  </p>
+  <p lang="ja">これは通常の &lt;input type="checkbox"/&gt; タグです。
+    'input-switch' クラスによってこれをトグルスイッチに置き換えます。
+  </p>
+  <hr/>
   <h4>Simplest</h4>
+  <p lang="en">Just add the class 'input-switch' :</p>
+  <p lang="ja">単にクラス 'input-switch' を追加した場合 :</p>
 <code><pre>&lt;input type="checkbox" class="input-switch"/&gt;</pre></code>
   <input type="checkbox" class="input-switch"/>
   <hr/>
   <h4>Diameter Variation</h4>
+  <p lang="en">Size variation by 'data-diameter' attribute :</p>
+  <p lang="ja">'data-diameter' 属性によるサイズの変更 :</p>
 <code><pre>
 &lt;input type="checkbox" class="input-switch" data-diameter="64"/&gt;
 &lt;input type="checkbox" class="input-switch" data-diameter="32"/&gt;
@@ -156,29 +311,45 @@ Usual attributes like 'min', 'max', 'step' are also effective.</p>
   <input type="checkbox" class="input-switch" data-diameter="16"/>
   <hr/>
   <h4>With External Image</h4>
+<img src="./images/switch_offon.png" align="left" style="border:2px solid #66d;margin-right:20px"/>
+<p lang="en">The switch image can be specified with 'data-src' attribute.
+  This image should be a image that is vertically stitched off and on state images.
+  Image is automatically resized to 'data-diameter' size square.
+</p>
+<p lang="ja">'data-src' 属性によってスイッチの画像を指定する事ができます。
+  この画像はオフ状態とオン状態を縦方向に繋いだ1枚の画像です。
+  画像は自動的に 'data-diameter' の大きさにリサイズされます。
+</p>
+<br clear="both"/>
 <code><pre>
-&lt;input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/&gt;
-&lt;input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="50"/&gt;
-&lt;input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="30"/&gt;
+&lt;input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
+&lt;input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/&gt;
+&lt;input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="30"/&gt;
 </pre></code>
-  <input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/>
-  <input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="50"/>
-  <input type="checkbox" class="input-switch" data-src="./switch_offon.png" data-diameter="30"/>
+  <input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
+  <input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/>
+  <input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="30"/>
 <hr/>
-  <h4>Event Handling</h4>
-  <code><pre>&lt;input type="range" class="input-knob" oninput="inputHandler" onchange="changeHandler"/&gt;</pre></code>
-    <textarea id="log2" cols="50" rows="10"></textarea><button onclick="log2.value=''">Clear Log</button>
-    <input type="checkbox" class="input-switch" onchange="log2.value+='\'change\' this.checked='+this.checked+'\n'"/>
+  <h4>Events Handling</h4>
+  <p lang="en">'change' event is fired when 'checked' state is changed.</p>
+  <p lang="ja">'checked' の状態が変化した時に、'change' イベントが発火します。</p>
+  <code><pre>&lt;input type="checkbox" class="input-switch" onchange="changeEventHandler(this)"/&gt;</pre></code>
+    <textarea id="log2" cols="50" rows="10"></textarea>
+    <input type="checkbox" class="input-switch" onchange="addText(log2,'\'change\' this.checked='+this.checked+'\n')"/>
 <hr/>
   <h4>Radio Buttons</h4>
+<p lang="en">Class 'input-switch' is also effective for &ltinput type="radio"/&gt; tag.
+</p>
+<p lang="ja">'input-switch' クラスは &ltinput type="radio"/&gt; タグに使用する事もできます。
+</p>
 <code><pre>
-&lt;input type="radio" name="group1" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/&gt;
-&lt;input type="radio" name="group1" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/&gt;
-&lt;input type="radio" name="group1" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/&gt;
+&lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
+&lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
+&lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
 </pre></code>
-<input type="radio" name="group1" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/>
-<input type="radio" name="group1" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/>
-<input type="radio" name="group1" class="input-switch" data-src="./switch_offon.png" data-diameter="80"/>
+<input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
+<input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
+<input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
 
 <hr/>
 <h2>License</h2>
@@ -187,5 +358,31 @@ Usual attributes like 'min', 'max', 'step' are also effective.</p>
 toggle switch image by az (c) 2011 CC-BY</p>
 <hr/>
 </div>
+</div>
+<script>
+function addText(el,txt){
+  txt=el.value+txt;
+  let rows=txt.split("\n");
+  if(rows.length>el.rows)
+    rows.shift();
+  el.value=rows.join("\n");
+}
+function SetLang(x) {
+  let el=document.getElementsByTagName("*");
+  for(let i=0;i<el.length;++i) {
+    if(el[i].lang==x||el[i].lang=="")
+      el[i].style.display=el[i].displaybackup;
+    else{
+      if(el[i].style.display!="none")
+        el[i].displaybackup=el[i].style.display;
+      el[i].style.display="none";
+    }
+	}
+}
+function GetLang() {
+	return (navigator.language || navigator.browserLanguage).substring(0, 2);
+}
+SetLang(GetLang())
+</script>
 </body>
 </html>

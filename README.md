@@ -1,6 +1,6 @@
 # input-knobs.js
 
-![](sample.png)
+![](images/sample.png)
 
 ---
 
