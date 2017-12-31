@@ -179,6 +179,12 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     <tr><th>data-sprites = "nn"</th>
       <td>For Knob only. If you use frame stitched knob-image, this attribute should be the number of frames.
         If this number is 2 or more, input-knobs uses frame switching procedure instead of image rotation.</td></tr>
+      <tr><th>data-fgcolor = "color"</th>
+        <td>Change Knob / Switch 's pointer color when no external image (data-src) is used. Default is red "#f00".
+      </td></tr>
+      <tr><th>data-bgcolor = "color"</th>
+        <td>Change Knob / Switch 's background color when no external image (data-src) is used. Default is black "#000".
+      </td></tr>
   </table>
   <table lang="ja">
     <tr><th style="width:20%">属性</th><th>説明</th></tr>
@@ -194,6 +200,12 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
       <td>ノブの場合のみ使用します。
         ノブの画像にフレームを繋いだ画像を使用する場合、この属性はフレームの数を指定しなくてはなりません。
         この数が2以上の場合に input-knobs は1枚の画像の回転させるのではなく、コマの切り替えによる動作を行います。</td></tr>
+    <tr><th>data-fgcolor = "color"</th>
+      <td>ノブ、スイッチで外部画像(data-src)を使用しない場合のポインター部分の色指定です。デフォルトは赤 #f00 になっています。
+      </td></tr>
+    <tr><th>data-bgcolor = "color"</th>
+        <td>ノブ、スイッチで外部画像(data-src)を使用しない場合の背景部分の色指定です。デフォルトは黒 #000 になっています。
+      </td></tr>
   </table>
   <hr/>
   <h2>Knob Samples</h2>
@@ -203,7 +215,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
   <p lang="ja">これが通常の &lt;input type="range"/&gt; です。
     'input-knob' クラスはこれを回転するノブに置き換えます。</p>
   <hr/>
-  <h4>Simplest:</h4>
+  <h4>Simplest</h4>
   <p lang="en">Just add the class "input-knob" to &lt;input type="range"&gt; tag.
     This behave same as normal &lt;input type="range"&gt; tag except for appearance and mouse operation.
   </p>
@@ -213,7 +225,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
 <code><pre>&lt;input type="range" class="input-knob"/&gt;</pre></code>
   <input type="range" class="input-knob"/>
   <hr/>
-  <h4>Diameter Variation:</h4>
+  <h4>Diameter Variation</h4>
   <p lang="en">You can customize the knob size by attribute 'data-diameter'.</p>
   <p lang="ja">ノブのサイズを 'data-diameter' 属性でカスタマイズする事ができます。</p>
 <code><pre>
@@ -224,6 +236,18 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
   <input type="range" class="input-knob" data-diameter="120"/>
   <input type="range" class="input-knob" data-diameter="60"/>
   <input type="range" class="input-knob" data-diameter="32"/>
+  <hr/>
+  <h4>Color Variation</h4>
+  <p lang="en">You can customize the knob color by attribute 'data-fgcolor' and 'data-bgcolor'.</p>
+  <p lang="ja">ノブの色を 'data-fgcolor' および 'data-bgcolor' 属性でカスタマイズする事ができます。</p>
+<code><pre>
+&lt;input type="range" class="input-knob" data-fgcolor="#00ff00"/&gt;
+&lt;input type="range" class="input-knob" data-bgcolor="#406080"/&gt;
+&lt;input type="range" class="input-knob" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/&gt;
+</pre></code>
+  <input type="range" class="input-knob" data-fgcolor="#00ff00"/>
+  <input type="range" class="input-knob" data-bgcolor="#406080"/>
+  <input type="range" class="input-knob" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/>
   <hr/>
   <h4>With External Knob Image</h4>
 <img src="./images/knobman96.png" width="60" style="float:left;border:2px solid #66d;margin-right:20px"/>
@@ -299,8 +323,8 @@ Usual attributes like 'min', 'max', 'step' are also effective.
   <input type="checkbox" class="input-switch"/>
   <hr/>
   <h4>Diameter Variation</h4>
-  <p lang="en">Size variation by 'data-diameter' attribute :</p>
-  <p lang="ja">'data-diameter' 属性によるサイズの変更 :</p>
+  <p lang="en">Switch size is changeable by 'data-diameter' attribute.</p>
+  <p lang="ja">'data-diameter' 属性でスイッチのサイズを変更できます。</p>
 <code><pre>
 &lt;input type="checkbox" class="input-switch" data-diameter="64"/&gt;
 &lt;input type="checkbox" class="input-switch" data-diameter="32"/&gt;
@@ -309,6 +333,18 @@ Usual attributes like 'min', 'max', 'step' are also effective.
   <input type="checkbox" class="input-switch" data-diameter="64"/>
   <input type="checkbox" class="input-switch" data-diameter="32"/>
   <input type="checkbox" class="input-switch" data-diameter="16"/>
+  <hr/>
+  <h4>Color Variation</h4>
+  <p lang="en">You can customize the switch color by attribute 'data-fgcolor' and 'data-bgcolor'.</p>
+  <p lang="ja">スイッチの色を 'data-fgcolor' および 'data-bgcolor' 属性でカスタマイズする事ができます。</p>
+<code><pre>
+&lt;input type="checkbox" class="input-switch" data-fgcolor="#00ff00"/&gt;
+&lt;input type="checkbox" class="input-switch" data-bgcolor="#406080"/&gt;
+&lt;input type="checkbox" class="input-switch" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/&gt;
+</pre></code>
+  <input type="checkbox" class="input-switch" data-fgcolor="#00ff00"/>
+  <input type="checkbox" class="input-switch" data-bgcolor="#406080"/>
+  <input type="checkbox" class="input-switch" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/>
   <hr/>
   <h4>With External Image</h4>
 <img src="./images/switch_offon.png" align="left" style="border:2px solid #66d;margin-right:20px"/>
