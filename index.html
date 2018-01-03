@@ -15,7 +15,7 @@ body{
   background:#c0c8f4;
   margin:0 auto;
   padding:0;
-  width:85%;
+  width:85vw;
 }
 #header{
   background: #56d;
@@ -89,16 +89,17 @@ textarea{
   <input type="range" class="input-knob"/> <input type="range" class="input-knob"/> <input type="range" class="input-knob"/>
   <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/> <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/> <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/>
   <input type="checkbox" class="input-switch"/> <input type="checkbox" class="input-switch"/> <input type="checkbox" class="input-switch"/>
-  <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/>
+  <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/><br/>
+  <input type="range" class="input-slider"/><input type="range" class="input-slider" data-bgcolor="#248" data-fgcolor="#fe3"/><input type="range" class="input-slider" data-bgcolor="#824" data-fgcolor="#ffe"/>
   </div>
 <h4>'input-knob.js' is here : <a href="input-knobs.js">input-knobs.js</a><br/>
 GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://github.com/g200kg/input-knobs</a></h4>
   <h2>Features</h2>
-  <p lang="en"><b>input-knobs.js</b> is a Javascript library for Rotating Knob / Toggle Switch / Radio Button style GUI widgets.
+  <p lang="en"><b>input-knobs.js</b> is a Javascript library for Rotating Knobs / Horizontal & Vertical Sliders / Toggle Switches / Radio Buttons style GUI widgets.
     This is a sub-set of "<a href="https://github.com/g200kg/webaudio-controls">webaudio-controls</a>"
     and simply replace the appearance of &lt;input/&gt; tags to rotating knobs or switches.
   </p>
-  <p lang="ja"><b>input-knobs.js</b> は回転するノブ、トグルスイッチ、ラジオボタン型の GUI ウィジェット向けの Javascript ライブラリです。
+  <p lang="ja"><b>input-knobs.js</b> は回転するノブ、水平および垂直のスライダー、トグルスイッチ、ラジオボタン型の GUI ウィジェット向けの Javascript ライブラリです。
     これは<a href="https://github.com/g200kg/webaudio-controls">webaudio-controls</a>"のサブセットで、単純に &lt;input/&gt; タグの外見を
     回転するノブやスイッチに置き換えます。
   </p>
@@ -106,6 +107,8 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
   <table>
     <tr><th style="width:60%">Tag</th><th>Change to </th></tr>
     <tr><td>&lt;input type="range" class="input-knob"/&gt;</td><td>Rotating Knob</td></tr>
+    <tr><td>&lt;input type="range" class="input-slider"/&gt;</td><td>Horizontal Slider</td></tr>
+    <tr><td>&lt;input type="range" class="input-slider"/&gt;</td><td>Vertical Slider</td></tr>
     <tr><td>&lt;input type="checkbox" class="input-switch"/&gt;</td><td>Toggle Switch</td></tr>
     <tr><td>&lt;input type="radio" class="input-switch"/&gt;</td><td>Radio Button</td></tr>
   </table>
@@ -115,13 +118,15 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     <li>Lightweighted. No other libraries are required.</li>
     <li>'input' and 'change' events are fired same as normal input tags.</li>
     <li>Work even under 'file:///' protocol.</li>
+    <li>Touch devices support.</li>
   </ul>
   <ul lang="ja">
     <li>単一のファイル `input-knobs.js` を配置して読み込むだけで簡単に使用できます</li>
     <li>Chrome / Firefox / Safari / Edge で動作します</li>
-    <li>軽量です。他のライブラリは必要としません</li>
+    <li>軽量です。他のライブラリを必要としません</li>
     <li>通常の input タグと同様に 'input' および 'change' イベントを発火します</li>
     <li>'file:///' プロトコル上でも使用可能です</li>
+    <li>タッチデバイスでの動作も可能です</li>
   </ul>
   <h2>Usage</h2>
   <ul lang="en">
@@ -131,7 +136,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
         &lt;script src="input-knobs.js"&gt;&lt;/script&gt;
       </code>
     </li>
-    <li>Add class 'input-knob' to your 'input type=range' tag, or 'input-switch' to 'input type=checkbox' / 'input type=radio' tags</li>
+    <li>Add class 'input-knob', 'input-slider', 'input-switch' to input tag in your HTML.</li>
     <li>Some optional attributes (data-*) are also available for customize</li>
   </ul>
   <ul lang="ja">
@@ -141,13 +146,13 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
         &lt;script src="input-knobs.js"&gt;&lt;/script&gt;
       </code>
     </li>
-    <li>'input type=range' タグにクラス 'input-knob' を追加、または 'input type=checkbox' / 'input type=radio' タグにクラス 'input-switch' を追加します</li>
+    <li>HTML の 'input' タグに適宜クラス 'input-knob'、'input-slider'、'input-switch' を追加します</li>
     <li>更に幾つかの属性 (data-*) を追加してカスタマイズする事もできます</li>
   </ul>
   <hr/>
   <h2>Operation</h2>
-  <p lang="en">There are some tips for knob operation :</p>
-  <p lang="ja">ノブの操作方法に幾つかの Tips があります :</p>
+  <p lang="en">There are some tips for knobs and sliders operation :</p>
+  <p lang="ja">ノブおよびスライダーの操作方法に幾つかの Tips があります :</p>
   <table lang="en">
   <tr><th>Operation</th><th>Description</th></tr>
   <tr><th>Mouse dragging</th><td>Upward / Right for increase value,<br/> Downward / Left for decrease value</td></tr>
@@ -166,45 +171,73 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
   </table>
 
   <h2>Attributes</h2>
-  <table lang="en">
-    <tr><th style="width:20%">Attribute</th><th>Description</th></tr>
+  <table lang="en" style="width:80vw;text-align:left">
+    <tr><th style="width:25%">Attribute</th><th>Description</th></tr>
     <tr><th>data-diameter = "nnn"</th>
-      <td>Set the diameter of the knob or switch in 'px'. In default, 64 for knobs and 32 for switches.</td></tr>
+      <td>Set the width and height of the knobs or switches in 'px'.
+      This is equivarent to 'data-width="nnn" data-height="nnn"'. In default, 64 for knobs and 32 for switches.
+    </td></tr>
+    <tr><th>data-width = "nnn"<br/>data-height = "nnn"</th>
+      <td>Set the width and height of the knobs, sliders or switches individually in 'px'.<br/>
+        In default, 64 for knobs, 128 for sliders and 32 for switches.<br/>
+        If the size for slider is vertically long, the slider will be a vertical slider.
+      </td></tr>
     <tr><th>data-src = "Image URL"</th>
       <td>Use external image for the knobs/switches.<br/><br/>
         For Knobs, the image should be single knob-image that pointing upward (12 O'clock),
-        or a vertically stitched knob-images that represent rotation of the knob frame by frame.<br/><br/>
-        For Switches, this image should be a vertically stitched Off state and On state image.<br/><br/>
-        If no image is supplied, input-knobs uses knob/switch images embedded inside (black body and red indicator)</td></tr>
-    <tr><th>data-sprites = "nn"</th>
-      <td>For Knob only. If you use frame stitched knob-image, this attribute should be the number of frames.
-        If this number is 2 or more, input-knobs uses frame switching procedure instead of image rotation.</td></tr>
+        or a vertically stitched knob-images that represent rotation of the knob frame by frame.
+        <br/><br/>
+        For Sliders, the image should be a vertically stitched slider-images that represent thumb sliding from min value to max value frame by frame.
+        <br/><br/>
+        For Switches, this image should be a vertically stitched Off state and On state image.
+        <br/><br/>
+        If no image is supplied, input-knobs uses knob/slider/switch images embedded inside (black body and red indicator)
+    </td></tr>
+    <tr><th>data-sprites = "nnn"</th>
+      <td>For Knob / Sliders only. If you use frame stitched knob/slider-image,
+        this attribute should be the number of frames.
+        <br/><br/>
+        The knobs that specified 'data-src' but not specified this attribute, it will use image rotation instead of frame switching procedure.
+        <br/><br/>
+        The sliders that specified 'data-src' but not specified this attribute, the image is used as slider thumb part and the background is filled by 'data-bgcolor' .
+        </td></tr>
       <tr><th>data-fgcolor = "color"</th>
-        <td>Change Knob / Switch 's pointer color when no external image (data-src) is used. Default is red "#f00".
+        <td>Change Knob / Slider / Switch 's pointer color when no external image (data-src) is used. Default is red "#f00".
       </td></tr>
       <tr><th>data-bgcolor = "color"</th>
-        <td>Change Knob / Switch 's background color when no external image (data-src) is used. Default is black "#000".
+        <td>Change Knob / Slider / Switch 's background color when no external image (data-src) is used.
+          Default is black "#000".
       </td></tr>
   </table>
-  <table lang="ja">
-    <tr><th style="width:20%">属性</th><th>説明</th></tr>
+  <table lang="ja" style="width:80vw;text-align:left">
+    <tr><th style="width:25%">属性</th><th>説明</th></tr>
     <tr><th>data-diameter = "nnn"</th>
-      <td>ノブ、スイッチのサイズ(直径) を 'px' で指定します。デフォルトではノブは 64、スイッチは 32 になっています。</td></tr>
+      <td>ノブ、スイッチのサイズを 'px' で指定します。これは'data-width="nnn" data-height="nnn"' をまとめて指定する事と等価です。デフォルトではノブは 64、スイッチは 24 になっています。</td></tr>
+    <tr><th>data-width = "nnn"<br/>data-height = "nnn"</th>
+      <td>ノブ、スライダー、スイッチの幅および高さを 'px' で指定します。デフォルトではノブは幅、高さ共に 64、スイッチは幅、高さ共に 24 です。<br/><br/>
+        またスライダーのデフォルト値は幅 128、高さ 20 です。スライダーで指定された形状が縦長の場合、自動的に垂直スライダーとなります。
+      </td></tr>
     <tr><th>data-src = "Image URL"</th>
-      <td>ノブ、スイッチに外部の画像を使用します。<br/><br/>
-        ノブの場合、この画像は真上(12時の方向)を指した単一の画像、または回転をあらわすコマ毎の画像を縦方向に繋げた画像です。
+      <td>ノブ、スライダー、スイッチに外部の画像を使用します。<br/><br/>
+        ノブの場合、この画像は真上(12時の方向)を指した単一の画像、または最小値から最大値までの回転をあらわすコマ毎の画像を縦方向に繋げた画像です。
         <br/><br/>
-        スイッチの場合、この画像はオフ状態とオン状態の画像を縦方向に繋げた画像でなくてはなりません。<br/><br/>
-        画像が指定されない場合は、input-knobs は内部に保持しているノブ/スイッチの画像(黒い本体に赤いインジケータ)を使用します。</td></tr>
+        また、スライダーではツマミ部分の1枚の画像または、最小値から最大値までのスライドをあらわすコマ毎のスライダー全体画像を縦方向に繋げた画像を指定します。
+        <br/><br/>
+        スイッチの場合、この画像はオフ状態とオン状態の画像を縦方向に繋げた画像でなくてはなりません。
+        <br/><br/>
+        画像が指定されない場合は、input-knobs は内部に保持しているノブ/スライダー/スイッチの画像(黒い本体に赤いインジケータ)を使用します。</td></tr>
     <tr><th>data-sprites = "nn"</th>
-      <td>ノブの場合のみ使用します。
-        ノブの画像にフレームを繋いだ画像を使用する場合、この属性はフレームの数を指定しなくてはなりません。
-        この数が2以上の場合に input-knobs は1枚の画像の回転させるのではなく、コマの切り替えによる動作を行います。</td></tr>
+      <td>ノブおよびスライダーの場合のみ使用します。
+        ノブ/スライダーの画像として複数のフレームを繋いだ画像を使用する場合、この属性でフレームの数を指定しなくてはなりません。
+        <br/><br/>
+        data-src を指定したノブでこれを指定しない場合は、1枚の画像を回転させる動作となります。<br/><br/>
+        data-src を指定したスライダーでこれを指定しない場合、画像はスライダーのツマミ部分だけを表す画像として使用され、背景は黒または 'data-bgcolor' で塗りつぶされます。
+      </td></tr>
     <tr><th>data-fgcolor = "color"</th>
-      <td>ノブ、スイッチで外部画像(data-src)を使用しない場合のポインター部分の色指定です。デフォルトは赤 #f00 になっています。
+      <td>外部画像(data-src)を使用しない場合のポインター部分の色指定です。デフォルトは赤 #f00 になっています。
       </td></tr>
     <tr><th>data-bgcolor = "color"</th>
-        <td>ノブ、スイッチで外部画像(data-src)を使用しない場合の背景部分の色指定です。デフォルトは黒 #000 になっています。
+        <td>外部画像(data-src)を使用しない場合、およびスライダーで 'data-src' をツマミ部分だけに使用する場合の背景の色指定です。デフォルトは黒 #000 になっています。
       </td></tr>
   </table>
   <hr/>
@@ -307,89 +340,157 @@ Usual attributes like 'min', 'max', 'step' are also effective.
   <textarea id="log1" cols="50" rows="10"></textarea>
   <input type="range" class="input-knob" min="0" max="10" step="0.1" oninput="addText(log1,'\'input\' this.value='+this.value+'\n')" onchange="addText(log1,'\'change\' this.value='+this.value+'\n')"/>
   <hr/>
-  <h2>Switch Samples</h2>
-  <input type="checkbox"/>
-  <p lang="en">This is a usual &lt;input type="checkbox"/&gt;.
-    class 'input-switch' makes this to a toggle switch.
-  </p>
-  <p lang="ja">これは通常の &lt;input type="checkbox"/&gt; タグです。
-    'input-switch' クラスによってこれをトグルスイッチに置き換えます。
-  </p>
-  <hr/>
-  <h4>Simplest</h4>
-  <p lang="en">Just add the class 'input-switch' :</p>
-  <p lang="ja">単にクラス 'input-switch' を追加した場合 :</p>
+<h2>Slider Samples</h2>
+<h4>Simplest</h4>
+<p lang="en">Just add the class 'input-slider', it is a width 128px, height 20px horizontal slider.</p>
+<p lang="ja">単にクラス 'input-slider' を追加した場合、width は 128px、height は 20px の水平スライダーになります。</p>
+<code><pre>
+&lt;input type="range" class="input-slider"/&gt;
+</pre></code>
+<input type="range" class="input-slider"/>
+<hr/>
+<h4>Size Variation</h4>
+<p lang="en">You can customize the slider size by attribute 'data-width' and 'data-height'.
+At this time, specifying a vertically long shape will automatically become a vertical slider.</p>
+<p lang="ja">スライダーのサイズを 'data-width' および 'dat-height' 属性でカスタマイズする事ができます。
+この時、縦長の形状を指定すると自動的に縦スライダーになります。</p>
+<code><pre>
+&lt;input type="range" class="input-slider" data-width="300" data-height="40"/&gt;
+&lt;input type="range" class="input-slider" data-width="150"/&gt;
+&lt;input type="range" class="input-slider" data-width="100" data-height="16"/&gt;
+&lt;input type="range" class="input-slider" data-width="40"/&gt;
+&lt;input type="range" class="input-slider" data-height="150"/&gt;
+&lt;input type="range" class="input-slider" data-width="16" data-height="100"/&gt;
+</pre></code>
+<input type="range" class="input-slider" data-width="300" data-height="40"/><br/>
+<input type="range" class="input-slider" data-width="150"/><br/>
+<input type="range" class="input-slider" data-width="100" data-height="16"/><br/>
+<input type="range" class="input-slider" data-width="50" data-height="150"/>
+<input type="range" class="input-slider" data-width="40" data-height="120"/>
+<input type="range" class="input-slider" data-width="16" data-height="100"/><br/>
+<hr/>
+<h4>Color Variation</h4>
+<p lang="en">You can customize the slider color by attribute 'data-fgcolor' and 'data-bgcolor'.</p>
+<p lang="ja">スライダーの色を 'data-fgcolor' および 'data-bgcolor' 属性でカスタマイズする事ができます。</p>
+<code><pre>
+&lt;input type="range" class="input-slider" data-fgcolor="#00ff00"/&gt;
+&lt;input type="range" class="input-slider" data-bgcolor="#406080"/&gt;
+&lt;input type="range" class="input-slider" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/&gt;
+</pre></code>
+<input type="range" class="input-slider" data-fgcolor="#00ff00"/><br/>
+<input type="range" class="input-slider" data-bgcolor="#406080"/><br/>
+<input type="range" class="input-slider" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/><br/>
+<hr/>
+<h4>With External Image</h4>
+<p lang="en">If an image is specified by 'data-src', it will be used as the slider thumb.
+  The background color can be specified by 'data-bgcolor' attribute.
+</p>
+<p lang="ja">'data-src' で画像を指定してスライダーのツマミ部分に使用できます。この時、背景部の色は 'data-bgcolor' で指定できます。</p>
+<code><pre>
+  &lt;input type="range" class="input-slider" data-src="./images/knobman96.png"/&gt;
+  &lt;input type="range" class="input-slider" data-width="50" data-height="120" data-src="./images/knobman96.png"/&gt;
+  &lt;input type="range" class="input-slider" data-width="50" data-height="120" data-bgcolor="#28f" data-src="./images/knobman96.png"/&gt;
+</pre></code>
+<input type="range" class="input-slider" data-src="./images/knobman96.png"/>
+<input type="range" class="input-slider" data-width="50" data-height="120" data-src="./images/knobman96.png"/>
+<input type="range" class="input-slider" data-width="50" data-height="120" data-bgcolor="#28f" data-src="./images/knobman96.png"/>
+<hr/>
+<h4>With Multi Frame External Image</h4>
+<p lang="en">As with knobs, you can also create a full custom slider by specifying the multi-frame stitched image to 'data-src' attribute and specifying the number of frames with 'data-sprites'.</p>
+<p lang="ja">ノブの場合と同じようにフレームを接続した画像を 'data-src' 属性で指定して、'data-sprites' でコマ数を指定するとフルカスタムのスライダーを作る事もできます。</p>
+<code><pre>
+&lt;input type="range" class="input-slider" data-direction="horz" data-width="200" data-height="40" data-sprites="51" data-src="./images/slider3.png"/&gt;
+</pre></code>
+<div style="margin-right:20px;float:left;height:200px;width:250px;overflow-y:scroll;border:1px solid #88d"><img src="./images/slider3.png" style="border:2px solid #66d;margin:3px;"/></div>
+<input type="range" class="input-slider" data-diretion="horz" data-width="200" data-height="40" data-sprites="51" data-src="./images/slider3.png"/>
+<br clear="both"/>
+<hr/>
+<h2>Switch Samples</h2>
+<input type="checkbox"/>
+<p lang="en">This is a usual &lt;input type="checkbox"/&gt;.
+  class 'input-switch' makes this to a toggle switch.
+</p>
+<p lang="ja">これは通常の &lt;input type="checkbox"/&gt; タグです。
+  'input-switch' クラスによってこれをトグルスイッチに置き換えます。
+</p>
+<hr/>
+<h4>Simplest</h4>
+<p lang="en">Just add the class 'input-switch' :</p>
+<p lang="ja">単にクラス 'input-switch' を追加した場合 :</p>
 <code><pre>&lt;input type="checkbox" class="input-switch"/&gt;</pre></code>
-  <input type="checkbox" class="input-switch"/>
-  <hr/>
-  <h4>Diameter Variation</h4>
-  <p lang="en">Switch size is changeable by 'data-diameter' attribute.</p>
-  <p lang="ja">'data-diameter' 属性でスイッチのサイズを変更できます。</p>
+<input type="checkbox" class="input-switch"/>
+<hr/>
+<h4>Diameter Variation</h4>
+<p lang="en">Switch size is changeable by 'data-diameter' attribute or 'data-width' and 'data-height'.</p>
+<p lang="ja">'data-diameter' または 'data-width' と 'data-height' 属性でスイッチのサイズを変更できます。</p>
 <code><pre>
 &lt;input type="checkbox" class="input-switch" data-diameter="64"/&gt;
-&lt;input type="checkbox" class="input-switch" data-diameter="32"/&gt;
+&lt;input type="checkbox" class="input-switch" data-diameter="32" checked/&gt;
 &lt;input type="checkbox" class="input-switch" data-diameter="16"/&gt;
+&lt;input type="checkbox" class="input-switch" data-width="40" data-height="20"/&gt;
+&lt;input type="checkbox" class="input-switch" data-width="20" data-height="50"/&gt;
 </pre></code>
-  <input type="checkbox" class="input-switch" data-diameter="64"/>
-  <input type="checkbox" class="input-switch" data-diameter="32"/>
-  <input type="checkbox" class="input-switch" data-diameter="16"/>
-  <hr/>
-  <h4>Color Variation</h4>
-  <p lang="en">You can customize the switch color by attribute 'data-fgcolor' and 'data-bgcolor'.</p>
-  <p lang="ja">スイッチの色を 'data-fgcolor' および 'data-bgcolor' 属性でカスタマイズする事ができます。</p>
+<input type="checkbox" class="input-switch" data-diameter="64"/>
+<input type="checkbox" class="input-switch" data-diameter="32" checked/>
+<input type="checkbox" class="input-switch" data-diameter="16"/>
+<input type="checkbox" class="input-switch" data-width="40" data-height="20"/>
+<input type="checkbox" class="input-switch" data-width="20" data-height="50"/>
+<hr/>
+<h4>Color Variation</h4>
+<p lang="en">You can customize the switch color by attribute 'data-fgcolor' and 'data-bgcolor'.</p>
+<p lang="ja">スイッチの色を 'data-fgcolor' および 'data-bgcolor' 属性でカスタマイズする事ができます。</p>
 <code><pre>
-&lt;input type="checkbox" class="input-switch" data-fgcolor="#00ff00"/&gt;
+&lt;input type="checkbox" class="input-switch" data-fgcolor="#00ff00" checked/&gt;
 &lt;input type="checkbox" class="input-switch" data-bgcolor="#406080"/&gt;
 &lt;input type="checkbox" class="input-switch" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/&gt;
 </pre></code>
-  <input type="checkbox" class="input-switch" data-fgcolor="#00ff00"/>
-  <input type="checkbox" class="input-switch" data-bgcolor="#406080"/>
-  <input type="checkbox" class="input-switch" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/>
-  <hr/>
-  <h4>With External Image</h4>
+<input type="checkbox" class="input-switch" data-fgcolor="#00ff00" checked/>
+<input type="checkbox" class="input-switch" data-bgcolor="#406080"/>
+<input type="checkbox" class="input-switch" data-bgcolor="#2040c0" data-fgcolor="#ffc080"/>
+<hr/>
+<h4>With External Image</h4>
 <img src="./images/switch_offon.png" align="left" style="border:2px solid #66d;margin-right:20px"/>
 <p lang="en">The switch image can be specified with 'data-src' attribute.
-  This image should be a image that is vertically stitched off and on state images.
-  Image is automatically resized to 'data-diameter' size square.
+This image should be a image that is vertically stitched off and on state images.
+Image is automatically resized to 'data-diameter' size square.
 </p>
 <p lang="ja">'data-src' 属性によってスイッチの画像を指定する事ができます。
-  この画像はオフ状態とオン状態を縦方向に繋いだ1枚の画像です。
-  画像は自動的に 'data-diameter' の大きさにリサイズされます。
+この画像はオフ状態とオン状態を縦方向に繋いだ1枚の画像です。
+画像は自動的に 'data-diameter' の大きさにリサイズされます。
 </p>
 <br clear="both"/>
 <code><pre>
 &lt;input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
 &lt;input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/&gt;
-&lt;input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="30"/&gt;
+&lt;input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="30" checked/&gt;
 </pre></code>
-  <input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
-  <input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/>
-  <input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="30"/>
+<input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
+<input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/>
+<input type="checkbox" class="input-switch" data-src="./images/switch_offon.png" data-diameter="30" checked/>
 <hr/>
-  <h4>Events Handling</h4>
-  <p lang="en">'change' event is fired when 'checked' state is changed.</p>
-  <p lang="ja">'checked' の状態が変化した時に、'change' イベントが発火します。</p>
-  <code><pre>&lt;input type="checkbox" class="input-switch" onchange="changeEventHandler(this)"/&gt;</pre></code>
-    <textarea id="log2" cols="50" rows="10"></textarea>
-    <input type="checkbox" class="input-switch" onchange="addText(log2,'\'change\' this.checked='+this.checked+'\n')"/>
+<h4>Events Handling</h4>
+<p lang="en">'change' event is fired when 'checked' state is changed.</p>
+<p lang="ja">'checked' の状態が変化した時に、'change' イベントが発火します。</p>
+<code><pre>&lt;input type="checkbox" class="input-switch" onchange="changeEventHandler(this)"/&gt;</pre></code>
+  <input type="checkbox" class="input-switch" onchange="addText(log2,'\'change\' this.checked='+this.checked+'\n')"/><br/>
+  <textarea id="log2" cols="50" rows="10"></textarea>
 <hr/>
-  <h4>Radio Buttons</h4>
-<p lang="en">Class 'input-switch' is also effective for &ltinput type="radio"/&gt; tag.
+<h4>Radio Buttons</h4>
+<p lang="en">Class 'input-switch' is also effective for &lt;input type="radio"/&gt; tag.
 </p>
-<p lang="ja">'input-switch' クラスは &ltinput type="radio"/&gt; タグに使用する事もできます。
+<p lang="ja">'input-switch' クラスは &lt;input type="radio"/&gt; タグに使用する事もできます。
 </p>
 <code><pre>
 &lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
-&lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
+&lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80" checked/&gt;
 &lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
 </pre></code>
-<input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
-<input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
-<input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
-
+<input id="radio1" type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
+<input id="radio2" type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80" checked/>
+<input id="radio3" type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
 <hr/>
 <h2>License</h2>
-<p><b>input-knobs.js</b> is licensed under MIT-License.</p>
+<p><b>input-knobs.js</b> is released under the MIT License.</p>
 <p>Knob/Switch images in samples are from <a href="https://www.g200kg.com/en/webknobman/gallery.php">KnobGallery</a>,
 toggle switch image by az (c) 2011 CC-BY</p>
 <hr/>

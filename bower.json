@@ -1,0 +1,17 @@
+{
+  "name": "input-knobs",
+  "main": "input-knobs.js",
+  "homepage": "https://github.com/g200kg/input-knobs",
+  "authors": [
+    "g200kg"
+  ],
+  "description": "Javascript Knob library",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
