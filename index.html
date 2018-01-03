@@ -59,11 +59,12 @@ hr{
   background:#88d;
   border:none;
 }
-code>pre{
+pre{
   background:#ddf;
-  font-size:14px;
+  font-size:13px;
   padding:8px;
   border:1px solid #88a;
+  overflow:scroll;
 }
 textarea{
   resize:none;
@@ -387,9 +388,11 @@ At this time, specifying a vertically long shape will automatically become a ver
 </p>
 <p lang="ja">'data-src' で画像を指定してスライダーのツマミ部分に使用できます。この時、背景部の色は 'data-bgcolor' で指定できます。</p>
 <code><pre>
-  &lt;input type="range" class="input-slider" data-src="./images/knobman96.png"/&gt;
-  &lt;input type="range" class="input-slider" data-width="50" data-height="120" data-src="./images/knobman96.png"/&gt;
-  &lt;input type="range" class="input-slider" data-width="50" data-height="120" data-bgcolor="#28f" data-src="./images/knobman96.png"/&gt;
+&lt;input type="range" class="input-slider" data-src="./images/knobman96.png"/&gt;
+&lt;input type="range" class="input-slider" data-width="50"
+    data-height="120" data-src="./images/knobman96.png"/&gt;
+&lt;input type="range" class="input-slider" data-width="50" data-height="120"
+    data-bgcolor="#28f" data-src="./images/knobman96.png"/&gt;
 </pre></code>
 <input type="range" class="input-slider" data-src="./images/knobman96.png"/>
 <input type="range" class="input-slider" data-width="50" data-height="120" data-src="./images/knobman96.png"/>
@@ -399,10 +402,11 @@ At this time, specifying a vertically long shape will automatically become a ver
 <p lang="en">As with knobs, you can also create a full custom slider by specifying the multi-frame stitched image to 'data-src' attribute and specifying the number of frames with 'data-sprites'.</p>
 <p lang="ja">ノブの場合と同じようにフレームを接続した画像を 'data-src' 属性で指定して、'data-sprites' でコマ数を指定するとフルカスタムのスライダーを作る事もできます。</p>
 <code><pre>
-&lt;input type="range" class="input-slider" data-direction="horz" data-width="200" data-height="40" data-sprites="51" data-src="./images/slider3.png"/&gt;
+&lt;input type="range" class="input-slider" data-width="200" data-height="40"
+    data-sprites="51" data-src="./images/slider3.png"/&gt;
 </pre></code>
 <div style="margin-right:20px;float:left;height:200px;width:250px;overflow-y:scroll;border:1px solid #88d"><img src="./images/slider3.png" style="border:2px solid #66d;margin:3px;"/></div>
-<input type="range" class="input-slider" data-diretion="horz" data-width="200" data-height="40" data-sprites="51" data-src="./images/slider3.png"/>
+<input type="range" class="input-slider" data-width="200" data-height="40" data-sprites="51" data-src="./images/slider3.png"/>
 <br clear="both"/>
 <hr/>
 <h2>Switch Samples</h2>
@@ -481,9 +485,12 @@ Image is automatically resized to 'data-diameter' size square.
 <p lang="ja">'input-switch' クラスは &lt;input type="radio"/&gt; タグに使用する事もできます。
 </p>
 <code><pre>
-&lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
-&lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80" checked/&gt;
-&lt;input type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/&gt;
+&lt;input type="radio" name="group1" class="input-switch"
+    data-src="./images/switch_offon.png" data-diameter="80"/&gt;
+&lt;input type="radio" name="group1" class="input-switch"
+    data-src="./images/switch_offon.png" data-diameter="80" checked/&gt;
+&lt;input type="radio" name="group1" class="input-switch"
+    data-src="./images/switch_offon.png" data-diameter="80"/&gt;
 </pre></code>
 <input id="radio1" type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80"/>
 <input id="radio2" type="radio" name="group1" class="input-switch" data-src="./images/switch_offon.png" data-diameter="80" checked/>

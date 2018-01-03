@@ -1,8 +1,7 @@
 window.addEventListener("load",function(){
   let styles=document.createElement("style");
   styles.innerHTML="\
-  input[type=range].input-knob,\
-  input[type=range].input-slider{\
+  input[type=range].input-knob,input[type=range].input-slider{\
     -webkit-appearance:none;\
     -moz-appearance:none;\
     width:64px;\
@@ -16,25 +15,21 @@ window.addEventListener("load",function(){
     background-color:transparent;\
     touch-action:none;\
   }\
-  input[type=range].input-knob::-webkit-slider-thumb,\
-  input[type=range].input-slider::-webkit-slider-thumb{\
+  input[type=range].input-knob::-webkit-slider-thumb,input[type=range].input-slider::-webkit-slider-thumb{\
     -webkit-appearance:none;\
     opacity:0;\
   }\
-  input[type=range].input-knob::-moz-range-thumb,\
-  input[type=range].input-slider::-moz-range-thumb{\
+  input[type=range].input-knob::-moz-range-thumb,input[type=range].input-slider::-moz-range-thumb{\
     -moz-appearance:none;\
     height:0;\
     border:none;\
   }\
-  input[type=range].input-knob::-moz-range-track,\
-  input[type=range].input-slider::-moz-range-track{\
+  input[type=range].input-knob::-moz-range-track,input[type=range].input-slider::-moz-range-track{\
     -moz-appearance:none;\
     height:0;\
     border:none;\
   }\
-  input[type=checkbox].input-switch,\
-  input[type=radio].input-switch {\
+  input[type=checkbox].input-switch,input[type=radio].input-switch {\
     -webkit-appearance:none;\
     -moz-appearance:none;\
     width:32px;\
@@ -46,8 +41,7 @@ window.addEventListener("load",function(){
     border-radius:0;\
     background-color:transparent;\
   }\
-  input[type=checkbox].input-switch:checked,\
-  input[type=radio].input-switch:checked {\
+  input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked {\
     background-position:0% 100%;\
   }\
 ";
@@ -93,40 +87,16 @@ window.addEventListener("load",function(){
     d=+el.getAttribute("data-diameter");
     let fg=el.getAttribute("data-fgcolor");
     let bg=el.getAttribute("data-bgcolor");
-    if(fg==undefined) fg="#f00";
-    if(bg==undefined) bg="#000";
+    if(!fg) fg="#f00";
+    if(!bg) bg="#000";
     if(el.className.indexOf("input-knob")>=0)
       el.itype="k";
-    else{
-      switch(el.getAttribute("data-direction")){
-      case "horz":
-        el.itype="h";
-        break;
-      case "vert":
-        el.itype="v";
-        break;
-      }
-    }
     el.sensex=el.sensey=128;
     switch(el.itype){
     case "k":
       if(!d) d=64;
       if(!w) w=d;
       if(!h) h=d;
-      break;
-    case "h":
-      if(!w) w=128;
-      if(!h) h=20;
-      el.sensex=w-h;
-      el.sensey=Infinity;
-      el.style.backgroundSize="auto 100%";
-      break;
-    case "v":
-      if(!w) w=20;
-      if(!h) h=128;
-      el.sensex=Infinity;
-      el.sensey=h-w;
-      el.style.backgroundSize="100% auto";
       break;
     default:
       if(!w) w=128;
