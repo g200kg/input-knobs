@@ -1,4 +1,15 @@
 window.addEventListener("load",function(){
+  let defOptions={bgcolor:"#000",fgcolor:"#f00",knobDiameter:64,switchDiameter:24,sliderWidth:128,sliderHeight:20};
+  if(!window.inputKnobsOptions)
+    window.inputKnobsOptions={};
+  window.inputKnobsOptions=Object.assign(defOptions,window.inputKnobsOptions);
+  let o=window.inputKnobsOptions;
+  o.knobWidth=o.knobWidth||o.knobDiameter;
+  o.knobHeight=o.knobHeight||o.knobDiameter;
+  o.sliderWidth=o.sliderWidth||o.sliderDiameter;
+  o.sliderHeight=o.sliderHeight||o.sliderDiameter;
+  o.switchWidth=o.switchWidth||o.switchDiameter;
+  o.switchHeight=o.switchHeight||o.switchDiameter;
   let styles=document.createElement("style");
   styles.innerHTML="\
   input[type=range].input-knob,input[type=range].input-slider{\
@@ -80,27 +91,24 @@ window.addEventListener("load",function(){
   }
   var elem=document.querySelectorAll("input.input-knob,input.input-slider");
   for(let i=elem.length-1;i>=0;--i){
-    let w,h,d;
+    let w,h,d,fg,bg;
     let el=elem[i];
+    d=+el.getAttribute("data-diameter");
     w=+el.getAttribute("data-width");
     h=+el.getAttribute("data-height");
-    d=+el.getAttribute("data-diameter");
-    let fg=el.getAttribute("data-fgcolor");
-    let bg=el.getAttribute("data-bgcolor");
-    if(!fg) fg="#f00";
-    if(!bg) bg="#000";
+    bg=el.getAttribute("data-bgcolor")||window.inputKnobsOptions.bgcolor;
+    fg=el.getAttribute("data-fgcolor")||window.inputKnobsOptions.fgcolor;
     if(el.className.indexOf("input-knob")>=0)
       el.itype="k";
     el.sensex=el.sensey=200;
     switch(el.itype){
     case "k":
-      if(!d) d=64;
-      if(!w) w=d;
-      if(!h) h=d;
+      w=w||d||window.inputKnobsOptions.knobWidth;
+      h=h||d||window.inputKnobsOptions.knobHeight;
       break;
     default:
-      if(!w) w=128;
-      if(!h) h=20;
+      w=w||d||window.inputKnobsOptions.sliderWidth;
+      h=h||d||window.inputKnobsOptions.sliderHeight;
       if(w>=h){
         el.itype="h";
         el.sensex=w-h;
@@ -242,23 +250,20 @@ window.addEventListener("load",function(){
   elem=document.querySelectorAll("input[type=checkbox].input-switch,input[type=radio].input-switch");
   for(let i=elem.length-1;i>=0;--i){
     let el=elem[i];
+    let w,h,d,fg,bg;
     let src=el.getAttribute("data-src");
-    let w,h,d;
+    d=+el.getAttribute("data-diameter");
     w=+el.getAttribute("data-width");
     h=+el.getAttribute("data-height");
-    d=+el.getAttribute("data-diameter");
-    if(!d) d=24;
-    if(!w) w=d;
-    if(!h) h=d;
+    w=w||d||window.inputKnobsOptions.switchWidth;
+    h=h||d||window.inputKnobsOptions.switchHeight;
+    fg=el.getAttribute("data-fgcolor")||window.inputKnobsOptions.fgcolor;
+    bg=el.getAttribute("data-bgcolor")||window.inputKnobsOptions.bgcolor;
     el.style.width=w+"px";
     el.style.height=h+"px";
     if(src)
       el.style.backgroundImage="url("+src+")";
     else {
-      let fg=el.getAttribute("data-fgcolor");
-      let bg=el.getAttribute("data-bgcolor");
-      if(!fg) fg="#F00";
-      if(!bg) bg="#000";
       let minwh=Math.min(w,h);
       let svg='\
 <svg xmlns="http://www.w3.org/2000/svg" width="'+(w)+'" height="'+(h*2)+'" viewBox="0 0 '+(w)+' '+(h*2)+'" preserveAspectRatio="none">\

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="input-knobs.js"></script>
+<!--	<script>window.inputKnobsOptions={fgcolor:"#00ff00",bgcolor:"#000080",knobDiameter:"48"}</script>-->
 <style>
 body{
   font-family: 'Open Sans', sans-serif;
@@ -138,6 +139,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     <li>'file:///' プロトコル上でも使用可能です</li>
     <li>タッチデバイスでの動作も可能です</li>
   </ul>
+  <br/>
   <h2>Usage</h2>
   <ul lang="en">
     <li>Place `input-knobs.js` to appropriate folder</li>
@@ -159,7 +161,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     <li>HTML の 'input' タグに適宜クラス 'input-knob'、'input-slider'、'input-switch' を追加します</li>
     <li>更に幾つかの属性 (data-*) を追加してカスタマイズする事もできます</li>
   </ul>
-  <hr/>
+  <br/>
   <h2>Operation</h2>
   <p lang="en">There are some tips for knobs and sliders operation :</p>
   <p lang="ja">ノブおよびスライダーの操作方法に幾つかの Tips があります :</p>
@@ -179,7 +181,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
   <tr><th>Shiftキー + マウスホイール</th><td>微調整。ホイールの動きに対する感度が 1/5 になります</td></tr>
   <tr><th>キーボード<br/>(フォーカスを当てた後)</th><td>カーソル上または右 : 値を1ステップ増加<br/>カーソル下または左 : 値を1ステップ減少</td></tr>
   </table>
-
+  <br/>
   <h2>Attributes</h2>
   <table lang="en" style="width:80vw;text-align:left">
     <tr><th style="width:25%">Attribute</th><th>Description</th></tr>
@@ -250,7 +252,52 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
         <td>外部画像(data-src)を使用しない場合、およびスライダーで 'data-src' をツマミ部分だけに使用する場合の背景の色指定です。デフォルトは黒 #000 になっています。
       </td></tr>
   </table>
-  <hr/>
+ <br/>
+  <h2>inputKnobsOptions</h2>
+  <p lang="ja">
+    グローバルなオブジェクト window.inputKnobsOptions を定義する事により、個別のタグで 'data-*'
+    属性を設定しない場合のデフォルト値を設定しておく事ができます。
+    例えば次の行をHTMLファイル内に記述しておくと、ポインター色が緑、背景色が青、ノブの直径 48、がデフォルトとなります。
+  </p>
+  <p lang="en">
+    By defining the global object `window.inputKnobsOptions`,
+    the default values of each attribute are set. These values are used when no 'data-*' attributes are specified in each tag.
+    For example, following line in the HTML file will set the pointer color is green, the background color is blue, and the knob diameter is 48.</p>
+<pre>
+&lt;script&gt;window.inputKnobsOptions={fgcolor:"#00ff00",bgcolor:"#000080",knobDiameter:"48"}&lt;/script&gt;
+</pre>
+<p lang="ja">
+  <table>
+    <tr><th>Key</th><th>Description</th></tr>
+    <tr><th>knobDiameter</th><td>ノブの直径</td></tr>
+    <tr><th>knobWidth</th><td>ノブの幅、これは knobDiameter よりも優先します</td></tr>
+    <tr><th>knobHeight</th><td>ノブの高さ、これは knobDiameter よりも優先します</td></tr>
+    <tr><th>sliderWidth</th><td>スライダーの幅</td></tr>
+    <tr><th>sliderHeight</th><td>スライダーの高さ</td></tr>
+    <tr><th>switchDiameter</th><td>スイッチの直径</td></tr>
+    <tr><th>switchWidth</th><td>スイッチの幅、これは switchDiameter よりも優先します</td></tr>
+    <tr><th>switchHeight</th><td>スイッチの高さ、これは switchDiameter よりも優先します</td></tr>
+    <tr><th>fgcolor</th><td>インジケータ部の色</td></tr>
+    <tr><th>bgcolor</th><td>背景の色</td></tr>
+  </table>
+</p>
+  <p lang="en">
+    <table>
+      <tr><th>Key</th><th>Description</th></tr>
+      <tr><th>knobDiameter</th><td>Diameter of knobs</td></tr>
+      <tr><th>knobWidth</th><td>Width of knobs that takes prioriry over knobDiameter</td></tr>
+      <tr><th>knobHeight</th><td>Height of knobs height that takes priority over knobDiameter</td></tr>
+      <tr><th>sliderWidth</th><td>Width of sliders</td></tr>
+      <tr><th>sliderHeight</th><td>Height of sliders</td></tr>
+      <tr><th>switchDiameter</th><td>Diameter of switches</td></tr>
+      <tr><th>switchWidth</th><td>Width of switches that takes priority over switchDiameter</td></tr>
+      <tr><th>switchHeight</th><td>height of switches that takes priority over switchDiameter</td></tr>
+      <tr><th>fgcolor</th><td>Indicator color</td></tr>
+      <tr><th>bgcolor</th><td>Background color</td></tr>
+    </table>
+  </p>
+  <br/>
+  <hr/><br/>
   <h2>Knob Samples</h2>
   <input type="range"/><br/>
   <p lang="en">This is a usual &lt;input type="range"/&gt;.
