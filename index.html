@@ -257,17 +257,19 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
   <p lang="ja">
     グローバルなオブジェクト window.inputKnobsOptions を定義する事により、個別のタグで 'data-*'
     属性を設定しない場合のデフォルト値を設定しておく事ができます。
-    例えば次の行をHTMLファイル内に記述しておくと、ポインター色が緑、背景色が青、ノブの直径 48、がデフォルトとなります。
+    例えば次の行をHTMLファイル内に記述しておく事で、ポインター色、背景色、ノブの直径のデフォルト値を変更できます。
   </p>
   <p lang="en">
     By defining the global object `window.inputKnobsOptions`,
     the default values of each attribute are set. These values are used when no 'data-*' attributes are specified in each tag.
-    For example, following line in the HTML file will set the pointer color is green, the background color is blue, and the knob diameter is 48.</p>
+    For example, following line in the HTML file will set the pointer color, the background color, and the knob diameter.</p>
 <pre>
 &lt;script&gt;window.inputKnobsOptions={fgcolor:"#00ff00",bgcolor:"#000080",knobDiameter:"48"}&lt;/script&gt;
 </pre>
+  <p lang="ja">次の表の項目が inputKnobsOptions で設定できます。</p>
+  <p lang="en">The items in the following table can be set with inputKnobsOptions.</p>
   <table lang="ja">
-    <tr><th>Key</th><th>Description</th></tr>
+    <tr><th>Key名</th><th>説明</th></tr>
     <tr><th>knobDiameter</th><td>ノブの直径</td></tr>
     <tr><th>knobWidth</th><td>ノブの幅、これは knobDiameter よりも優先します</td></tr>
     <tr><th>knobHeight</th><td>ノブの高さ、これは knobDiameter よりも優先します</td></tr>
