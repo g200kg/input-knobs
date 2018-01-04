@@ -91,7 +91,7 @@ window.addEventListener("load",function(){
     if(!bg) bg="#000";
     if(el.className.indexOf("input-knob")>=0)
       el.itype="k";
-    el.sensex=el.sensey=128;
+    el.sensex=el.sensey=200;
     switch(el.itype){
     case "k":
       if(!d) d=64;
