@@ -1,22 +1,18 @@
 window.addEventListener("load",function(){
-  let defOptions={bgcolor:"#000",fgcolor:"#f00",knobDiameter:64,switchDiameter:24,sliderWidth:128,sliderHeight:20};
-  if(!window.inputKnobsOptions)
-    window.inputKnobsOptions={};
-  window.inputKnobsOptions=Object.assign(defOptions,window.inputKnobsOptions);
-  let o=window.inputKnobsOptions;
-  o.knobWidth=o.knobWidth||o.knobDiameter;
-  o.knobHeight=o.knobHeight||o.knobDiameter;
-  o.sliderWidth=o.sliderWidth||o.sliderDiameter;
-  o.sliderHeight=o.sliderHeight||o.sliderDiameter;
-  o.switchWidth=o.switchWidth||o.switchDiameter;
-  o.switchHeight=o.switchHeight||o.switchDiameter;
+  let op=window.inputKnobsOptions||{};
+  op.knobWidth=op.knobWidth||op.knobDiameter||64;
+  op.knobHeight=op.knobHeight||op.knobDiameter||64;
+  op.sliderWidth=op.sliderWidth||op.sliderDiameter||128;
+  op.sliderHeight=op.sliderHeight||op.sliderDiameter||20;
+  op.switchWidth=op.switchWidth||op.switchDiameter||24;
+  op.switchHeight=op.switchHeight||op.switchDiameter||24;
+  op.fgcolor=op.fgcolor||"#f00";
+  op.bgcolor=op.bgcolor||"#000";
   let styles=document.createElement("style");
   styles.innerHTML="\
   input[type=range].input-knob,input[type=range].input-slider{\
     -webkit-appearance:none;\
     -moz-appearance:none;\
-    width:64px;\
-    height:64px;\
     border:none;\
     box-sizing:border-box;\
     overflow:hidden;\
@@ -25,6 +21,12 @@ window.addEventListener("load",function(){
     background-position:0px 0%;\
     background-color:transparent;\
     touch-action:none;\
+  }\
+  input[type=range].input-knob{\
+    width:"+(op.knobWidth)+"px; height:"+(op.knobHeight)+"px;\
+  }\
+  input[type=range].input-slider{\
+    width:"+(op.sliderWidth)+"px; height:"+(op.sliderHeight)+"px;\
   }\
   input[type=range].input-knob::-webkit-slider-thumb,input[type=range].input-slider::-webkit-slider-thumb{\
     -webkit-appearance:none;\
@@ -41,10 +43,10 @@ window.addEventListener("load",function(){
     border:none;\
   }\
   input[type=checkbox].input-switch,input[type=radio].input-switch {\
+    width:"+(op.swtichWidth)+"px;\
+    height:"+(op.switchHeight)+"px;\
     -webkit-appearance:none;\
     -moz-appearance:none;\
-    width:32px;\
-    height:32px;\
     background-size:100% 200%;\
     background-position:0% 0%;\
     background-repeat:no-repeat;\
@@ -93,22 +95,17 @@ window.addEventListener("load",function(){
   for(let i=elem.length-1;i>=0;--i){
     let w,h,d,fg,bg;
     let el=elem[i];
+    let op=window.inputKnobsOptions;
     d=+el.getAttribute("data-diameter");
-    w=+el.getAttribute("data-width");
-    h=+el.getAttribute("data-height");
-    bg=el.getAttribute("data-bgcolor")||window.inputKnobsOptions.bgcolor;
-    fg=el.getAttribute("data-fgcolor")||window.inputKnobsOptions.fgcolor;
+    let st=document.defaultView.getComputedStyle(el,null);
+    w=parseFloat(el.getAttribute("data-width")||d||st.width||w);
+    h=parseFloat(el.getAttribute("data-height")||d||st.height||h);
+    bg=el.getAttribute("data-bgcolor")||"#000";
+    fg=el.getAttribute("data-fgcolor")||"#f00";
+    el.sensex=el.sensey=200;
     if(el.className.indexOf("input-knob")>=0)
       el.itype="k";
-    el.sensex=el.sensey=200;
-    switch(el.itype){
-    case "k":
-      w=w||d||window.inputKnobsOptions.knobWidth;
-      h=h||d||window.inputKnobsOptions.knobHeight;
-      break;
-    default:
-      w=w||d||window.inputKnobsOptions.sliderWidth;
-      h=h||d||window.inputKnobsOptions.sliderHeight;
+    else{
       if(w>=h){
         el.itype="h";
         el.sensex=w-h;
@@ -121,7 +118,6 @@ window.addEventListener("load",function(){
         el.sensey=h-w;
         el.style.backgroundSize="100% auto";
       }
-      break;
     }
     el.style.width=w+"px";
     el.style.height=h+"px";
