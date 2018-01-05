@@ -43,7 +43,7 @@ window.addEventListener("load",function(){
     border:none;\
   }\
   input[type=checkbox].input-switch,input[type=radio].input-switch {\
-    width:"+(op.swtichWidth)+"px;\
+    width:"+(op.switchWidth)+"px;\
     height:"+(op.switchHeight)+"px;\
     -webkit-appearance:none;\
     -moz-appearance:none;\
@@ -95,13 +95,12 @@ window.addEventListener("load",function(){
   for(let i=elem.length-1;i>=0;--i){
     let w,h,d,fg,bg;
     let el=elem[i];
-    let op=window.inputKnobsOptions;
     d=+el.getAttribute("data-diameter");
     let st=document.defaultView.getComputedStyle(el,null);
-    w=parseFloat(el.getAttribute("data-width")||d||st.width||w);
-    h=parseFloat(el.getAttribute("data-height")||d||st.height||h);
-    bg=el.getAttribute("data-bgcolor")||"#000";
-    fg=el.getAttribute("data-fgcolor")||"#f00";
+    w=parseFloat(el.getAttribute("data-width")||d||st.width);
+    h=parseFloat(el.getAttribute("data-height")||d||st.height);
+    bg=el.getAttribute("data-bgcolor")||op.bgcolor;
+    fg=el.getAttribute("data-fgcolor")||op.fgcolor;
     el.sensex=el.sensey=200;
     if(el.className.indexOf("input-knob")>=0)
       el.itype="k";
@@ -249,12 +248,11 @@ window.addEventListener("load",function(){
     let w,h,d,fg,bg;
     let src=el.getAttribute("data-src");
     d=+el.getAttribute("data-diameter");
-    w=+el.getAttribute("data-width");
-    h=+el.getAttribute("data-height");
-    w=w||d||window.inputKnobsOptions.switchWidth;
-    h=h||d||window.inputKnobsOptions.switchHeight;
-    fg=el.getAttribute("data-fgcolor")||window.inputKnobsOptions.fgcolor;
-    bg=el.getAttribute("data-bgcolor")||window.inputKnobsOptions.bgcolor;
+    let st=document.defaultView.getComputedStyle(el,null);
+    w=parseFloat(el.getAttribute("data-width")||d||st.width);
+    h=parseFloat(el.getAttribute("data-height")||d||st.height);
+    bg=el.getAttribute("data-bgcolor")||op.bgcolor;
+    fg=el.getAttribute("data-fgcolor")||op.fgcolor;
     el.style.width=w+"px";
     el.style.height=h+"px";
     if(src)
