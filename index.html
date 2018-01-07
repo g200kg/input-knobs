@@ -400,10 +400,10 @@ Usual attributes like 'min', 'max', 'step' are also effective.
 <p lang="ja">ドラッグ中は 'input' イベントが発火し、mouseup の時に 'change' イベントが発火します。<br/>
 'min'、'max'、'step'　等の通常の属性も有効です。
 </p>
-<code><pre>&lt;input type="range" class="input-knob" min="0" max="10" step="0.1"
+<code><pre>&lt;input type="range" class="input-knob" min="-10" max="10" step="0.1"
    oninput="inputEventHandler(this)" onchange="changeEventHandler(this)"/&gt;</pre></code>
   <textarea id="log1" cols="50" rows="10"></textarea>
-  <input type="range" class="input-knob" min="0" max="10" step="0.1" oninput="addText(log1,'\'input\' this.value='+this.value+'\n')" onchange="addText(log1,'\'change\' this.value='+this.value+'\n')"/>
+  <input type="range" class="input-knob" min="-10" max="10" step="0.1" oninput="addText(log1,'\'input\' this.value='+this.value+'\n')" onchange="addText(log1,'\'change\' this.value='+this.value+'\n')"/>
   <hr/>
 <h2>Slider Samples</h2>
 <h4>Simplest</h4>
