@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="input-knobs.js"></script>
-<!--	<script>window.inputKnobsOptions={fgcolor:"#00ff00",bgcolor:"#000080",knobDiameter:"48"}</script>-->
+	<script>window.inputKnobsOptions={}</script>
 <style>
 body{
   font-family: 'Open Sans', sans-serif;
@@ -88,7 +88,7 @@ textarea{
   <div id="main">
 
   <div style="margin-left:20px">
-  <div style="float:left"/>
+  <div style="float:left">
     <input type="range" class="input-slider" data-height="110" data-width="12"/>
     <input type="range" class="input-slider" data-height="110" data-width="12"/>
     <input type="range" class="input-slider" data-height="110" data-width="12"/>
@@ -158,6 +158,8 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     </li>
     <li>Add class 'input-knob', 'input-slider', 'input-switch' to input tag in your HTML.</li>
     <li>Some optional attributes (data-*) are also available for customize</li>
+    <li>Event handling, get / set current value are similar to ordinary input tags.
+      However, if you change the size or color of an element after generated, explicit element.refresh() function call is needed for update display.</li>
   </ul>
   <ul lang="ja">
     <li>bower の場合はコンソールからコマンド `bower install --save g200kg/input-knobs` を使用してください。
@@ -170,6 +172,8 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     </li>
     <li>HTML の 'input' タグに適宜クラス 'input-knob'、'input-slider'、'input-switch' を追加します</li>
     <li>更に幾つかの属性 (data-*) を追加してカスタマイズする事もできます</li>
+    <li>イベントのハンドリングや現在の値の取得、設定等は通常の input タグと同様です。
+      ただしエレメントのサイズや色を生成後に変更する場合は element.refresh() 関数を明示的に呼び出して表示を更新する必要があります</li>
   </ul>
   <br/>
   <h2>Operation</h2>
@@ -304,6 +308,17 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     <tr><th>fgcolor</th><td>Indicator color</td></tr>
     <tr><th>bgcolor</th><td>Background color</td></tr>
   </table>
+  <br/>
+  <hr/><br/>
+  <h2>Functions</h2>
+  <h3>element.refresh()</h3>
+  <p lang="ja">input-knobs を適用した DOM エレメントに対し、生成後にサイズや色を変更した場合はこの関数を読んで表示を更新する必要があります。</p>
+  <p lang="en">If you change the size or color after DOM element with input-knobs is generated, this function call is needed for update the display.</p>
+  <pre><code>
+    let elem=document.getElementById("knob1");  // get existing input-knob element
+    elem.setAttribute("data-diameter","40");    // set the diameter to "40"
+    elem.refresh();                             // update display
+  </code></pre>
   <br/>
   <hr/><br/>
   <h2>Knob Samples</h2>

@@ -97,86 +97,93 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
     if(el.inputKnobs)
       return;
     el.inputKnobs={};
-    let src=el.getAttribute("data-src");
-    d=+el.getAttribute("data-diameter");
-    let st=document.defaultView.getComputedStyle(el,null);
-    w=parseFloat(el.getAttribute("data-width")||d||st.width);
-    h=parseFloat(el.getAttribute("data-height")||d||st.height);
-    bg=el.getAttribute("data-bgcolor")||op.bgcolor;
-    fg=el.getAttribute("data-fgcolor")||op.fgcolor;
-    el.style.width=w+"px";
-    el.style.height=h+"px";
-    if(src)
-      el.style.backgroundImage="url("+src+")";
-    else {
-      let minwh=Math.min(w,h);
-      let svg=
+    el.refresh=()=>{
+      let src=el.getAttribute("data-src");
+      d=+el.getAttribute("data-diameter");
+      let st=document.defaultView.getComputedStyle(el,null);
+      w=parseFloat(el.getAttribute("data-width")||d||st.width);
+      h=parseFloat(el.getAttribute("data-height")||d||st.height);
+      bg=el.getAttribute("data-bgcolor")||op.bgcolor;
+      fg=el.getAttribute("data-fgcolor")||op.fgcolor;
+      el.style.width=w+"px";
+      el.style.height=h+"px";
+      if(src)
+        el.style.backgroundImage="url("+src+")";
+      else {
+        let minwh=Math.min(w,h);
+        let svg=
 `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h*2}" viewBox="0 0 ${w} ${h*2}" preserveAspectRatio="none">
 <g><rect fill="${bg}" x="1" y="1" width="${w-2}" height="${h-2}" rx="${minwh*0.25}" ry="${minwh*0.25}"/>
 <rect fill="${bg}" x="1" y="${h+1}" width="${w-2}" height="${h-2}" rx="${minwh*0.25}" ry="${minwh*0.25}"/>
-<circle fill="${fg}" cx="${w*0.5}" cy="${h*1.5}" r="${minwh*0.25}"/>
-</g></svg>`;
-      el.style.backgroundImage="url(data:image/svg+xml;base64,"+btoa(svg)+")";
-    }
+<circle fill="${fg}" cx="${w*0.5}" cy="${h*1.5}" r="${minwh*0.25}"/></g></svg>`;
+        el.style.backgroundImage="url(data:image/svg+xml;base64,"+btoa(svg)+")";
+      }
+    };
+    el.refresh();
   };
   let initKnobs=(el)=>{
     let w,h,d,fg,bg;
-    if(el.inputKnobs)
+    if(el.inputKnobs){
+      el.redraw();
       return;
+    }
     let ik=el.inputKnobs={};
-    d=+el.getAttribute("data-diameter");
-    let st=document.defaultView.getComputedStyle(el,null);
-    w=parseFloat(el.getAttribute("data-width")||d||st.width);
-    h=parseFloat(el.getAttribute("data-height")||d||st.height);
-    bg=el.getAttribute("data-bgcolor")||op.bgcolor;
-    fg=el.getAttribute("data-fgcolor")||op.fgcolor;
-    ik.sensex=ik.sensey=200;
-    if(el.className.indexOf("input-knob")>=0)
-      ik.itype="k";
-    else{
-      if(w>=h){
-        ik.itype="h";
-        ik.sensex=w-h;
-        ik.sensey=Infinity;
-        el.style.backgroundSize="auto 100%";
+    el.refresh=()=>{
+      d=+el.getAttribute("data-diameter");
+      let st=document.defaultView.getComputedStyle(el,null);
+      w=parseFloat(el.getAttribute("data-width")||d||st.width);
+      h=parseFloat(el.getAttribute("data-height")||d||st.height);
+      bg=el.getAttribute("data-bgcolor")||op.bgcolor;
+      fg=el.getAttribute("data-fgcolor")||op.fgcolor;
+      ik.sensex=ik.sensey=200;
+      if(el.className.indexOf("input-knob")>=0)
+        ik.itype="k";
+      else{
+        if(w>=h){
+          ik.itype="h";
+          ik.sensex=w-h;
+          ik.sensey=Infinity;
+          el.style.backgroundSize="auto 100%";
+        }
+        else{
+          ik.itype="v";
+          ik.sensex=Infinity;
+          ik.sensey=h-w;
+          el.style.backgroundSize="100% auto";
+        }
+      }
+      el.style.width=w+"px";
+      el.style.height=h+"px";
+      ik.frameheight=h;
+      let src=el.getAttribute("data-src");
+      if(src){
+        el.style.backgroundImage=`url(${src})`;
+        let sp=+el.getAttribute("data-sprites");
+        if(sp)
+          ik.sprites=sp;
+        else
+          ik.sprites=1;
+        if(ik.sprites>=2)
+          el.style.backgroundSize=`100% ${ik.sprites*100}%`;
+        else if(ik.itype!="k"){
+          el.style.backgroundColor=bg;
+          el.style.borderRadius=Math.min(w,h)*0.25+"px";
+        }
       }
       else{
-        ik.itype="v";
-        ik.sensex=Infinity;
-        ik.sensey=h-w;
-        el.style.backgroundSize="100% auto";
-      }
-    }
-    el.style.width=w+"px";
-    el.style.height=h+"px";
-    ik.frameheight=h;
-    let src=el.getAttribute("data-src");
-    if(src){
-      el.style.backgroundImage=`url(${src})`;
-      let sp=+el.getAttribute("data-sprites");
-      if(sp)
-        ik.sprites=sp;
-      else
-        ik.sprites=1;
-      if(ik.sprites>=2)
+        let svg;
+        switch(ik.itype){
+        case "k": svg=makeKnobFrames(101,fg,bg); break;
+        case "h": svg=makeHSliderFrames(101,fg,bg,w,h); break;
+        case "v": svg=makeVSliderFrames(101,fg,bg,w,h); break;
+        }
+        ik.sprites=101;
+        el.style.backgroundImage="url(data:image/svg+xml;base64,"+btoa(svg)+")";
         el.style.backgroundSize=`100% ${ik.sprites*100}%`;
-      else if(ik.itype!="k"){
-        el.style.backgroundColor=bg;
-        el.style.borderRadius=Math.min(w,h)*0.25+"px";
       }
-    }
-    else{
-      let svg;
-      switch(ik.itype){
-      case "k": svg=makeKnobFrames(101,fg,bg); break;
-      case "h": svg=makeHSliderFrames(101,fg,bg,w,h); break;
-      case "v": svg=makeVSliderFrames(101,fg,bg,w,h); break;
-      }
-      ik.sprites=101;
-      el.style.backgroundImage="url(data:image/svg+xml;base64,"+btoa(svg)+")";
-      el.style.backgroundSize=`100% ${ik.sprites*100}%`;
-    }
-    ik.valrange={min:+el.min, max:(el.max=="")?100:+el.max, step:(el.step=="")?1:+el.step};
+      ik.valrange={min:+el.min, max:(el.max=="")?100:+el.max, step:(el.step=="")?1:+el.step};
+      el.redraw(true);
+    };
     el.setValue=(v)=>{
       v=(Math.round((v-ik.valrange.min)/ik.valrange.step))*ik.valrange.step+ik.valrange.min;
       if(v<ik.valrange.min) v=ik.valrange.min;
@@ -235,9 +242,11 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
           el.setValue(ik.dragfrom.v+dv);
           break;
         case "circularabs":
-          dv=ik.valrange.min+(da/Math.PI*0.75+0.5)*(ik.valrange.max-ik.valrange.min);
-          el.setValue(dv);
-          break;
+          if(!ev.shiftKey){
+            dv=ik.valrange.min+(da/Math.PI*0.75+0.5)*(ik.valrange.max-ik.valrange.min);
+            el.setValue(dv);
+            break;
+          }
         case "circularrel":
           if(da>ik.dragfrom.a+Math.PI) da-=Math.PI*2;
           if(da<ik.dragfrom.a-Math.PI) da+=Math.PI*2;
@@ -270,7 +279,7 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
     };
     ik.preventScroll=(ev)=>{
       ev.preventDefault();
-    }
+    };
     ik.keydown=()=>{
       el.redraw();
     };
@@ -282,8 +291,8 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
       ev.preventDefault();
       ev.stopPropagation();
     };
-    el.redraw=()=>{
-      if(ik.valueold!=el.value){
+    el.redraw=(f)=>{
+      if(f||ik.valueold!=el.value){
         let v=(el.value-ik.valrange.min)/(ik.valrange.max-ik.valrange.min);
         if(ik.sprites>1)
           el.style.backgroundPosition="0px "+(-((v*(ik.sprites-1))|0)*ik.frameheight)+"px";
@@ -303,28 +312,30 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
         ik.valueold=el.value;
       }
     };
+    el.refresh();
+    el.redraw(true);
     el.addEventListener("keydown",ik.keydown);
     el.addEventListener("mousedown",ik.pointerdown);
     el.addEventListener("touchstart",ik.pointerdown);
     el.addEventListener("wheel",ik.wheel);
-    el.redraw();
   }
-  let elem=document.querySelectorAll("input.input-knob,input.input-slider");
-  for(let i=elem.length-1;i>=0;--i)
-    initKnobs(elem[i]);
-  elem=document.querySelectorAll("input[type=checkbox].input-switch,input[type=radio].input-switch");
-  for(let i=elem.length-1;i>=0;--i)
-    initSwitches(elem[i]);
-  setInterval(()=>{
+  let refreshque=()=>{
     let elem=document.querySelectorAll("input.input-knob,input.input-slider");
-    for(let i=elem.length-1;i>=0;--i){
-      let el=elem[i];
-      initKnobs(el);
-      if(el.redraw)
-        el.redraw();
-    }
+    for(let i=0;i<elem.length;++i)
+      procque.push([initKnobs,elem[i]]);
     elem=document.querySelectorAll("input[type=checkbox].input-switch,input[type=radio].input-switch");
-    for(let i=elem.length-1;i>=0;--i)
-      initSwitches(elem[i]);
-  },1000);
+    for(let i=0;i<elem.length;++i){
+      procque.push([initSwitches,elem[i]]);
+    }
+  }
+  let procque=[];
+  refreshque();
+  setInterval(()=>{
+    for(let i=0;procque.length>0&&i<8;++i){
+      let q=procque.shift();
+      q[0](q[1]);
+    }
+    if(procque.length<=0)
+      refreshque();
+  },50);
 });
