@@ -162,9 +162,9 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
         if(sp)
           ik.sprites=sp;
         else
-          ik.sprites=1;
-        if(ik.sprites>=2)
-          el.style.backgroundSize=`100% ${ik.sprites*100}%`;
+          ik.sprites=0;
+        if(ik.sprites>=1)
+          el.style.backgroundSize=`100% ${(ik.sprites+1)*100}%`;
         else if(ik.itype!="k"){
           el.style.backgroundColor=bg;
           el.style.borderRadius=Math.min(w,h)*0.25+"px";
@@ -177,9 +177,9 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
         case "h": svg=makeHSliderFrames(101,fg,bg,w,h); break;
         case "v": svg=makeVSliderFrames(101,fg,bg,w,h); break;
         }
-        ik.sprites=101;
+        ik.sprites=100;
         el.style.backgroundImage="url(data:image/svg+xml;base64,"+btoa(svg)+")";
-        el.style.backgroundSize=`100% ${ik.sprites*100}%`;
+        el.style.backgroundSize=`100% ${(ik.sprites+1)*100}%`;
       }
       ik.valrange={min:+el.min, max:(el.max=="")?100:+el.max, step:(el.step=="")?1:+el.step};
       el.redraw(true);
@@ -294,8 +294,8 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
     el.redraw=(f)=>{
       if(f||ik.valueold!=el.value){
         let v=(el.value-ik.valrange.min)/(ik.valrange.max-ik.valrange.min);
-        if(ik.sprites>1)
-          el.style.backgroundPosition="0px "+(-((v*(ik.sprites-1))|0)*ik.frameheight)+"px";
+        if(ik.sprites>=1)
+          el.style.backgroundPosition="0px "+(-((v*ik.sprites)|0)*ik.frameheight)+"px";
         else{
           switch(ik.itype){
           case "k":

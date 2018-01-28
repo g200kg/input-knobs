@@ -94,10 +94,10 @@ textarea{
     <input type="range" class="input-slider" data-height="110" data-width="12"/>
   </div>
   <input type="range" class="input-knob"/> <input type="range" class="input-knob"/> <input type="range" class="input-knob"/>
-  <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/> <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/> <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="101"/>
+  <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="100"/> <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="100"/> <input type="range" class="input-knob" data-src="./images/knob70.png" data-sprites="100"/>
   <input type="checkbox" class="input-switch"/> <input type="checkbox" class="input-switch"/> <input type="checkbox" class="input-switch"/>
   <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/> <input type="radio" name="groupA" class="input-switch" data-src="./images/switch_offon.png" data-diameter="50"/><br/>
-  <input type="range" class="input-slider" data-width="200" data-height="40" data-sprites="51" data-src="./images/slider3.png"/>
+  <input type="range" class="input-slider" data-width="200" data-height="40" data-sprites="50" data-src="./images/slider3.png"/>
   <input type="range" class="input-slider" data-bgcolor="#eee"/>
   <input type="range" class="input-slider" data-bgcolor="#eee" data-fgcolor="#0f0"/>
   <input type="range" class="input-slider" data-bgcolor="#eee" data-fgcolor="#00f"/>
@@ -221,7 +221,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     </td></tr>
     <tr><th>data-sprites = "nnn"</th>
       <td>For Knob / Sliders only. If you use frame stitched knob/slider-image,
-        this attribute should be the number of frames.
+        this attribute should be the <b>number of frames - 1</b>.
         <br/><br/>
         The knobs that specified 'data-src' but not specified this attribute, it will use image rotation instead of frame switching procedure.
         <br/><br/>
@@ -255,6 +255,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
     <tr><th>data-sprites = "nn"</th>
       <td>ノブおよびスライダーの場合のみ使用します。
         ノブ/スライダーの画像として複数のフレームを繋いだ画像を使用する場合、この属性でフレームの数を指定しなくてはなりません。
+        指定する数 "nn" は <b>フレームの数 - 1</b> です。
         <br/><br/>
         data-src を指定したノブでこれを指定しない場合は、1枚の画像を回転させる動作となります。<br/><br/>
         data-src を指定したスライダーでこれを指定しない場合、画像はスライダーのツマミ部分だけを表す画像として使用され、背景は黒または 'data-bgcolor' で塗りつぶされます。
@@ -381,7 +382,7 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
   <h4>With Multi Frame External Image</h4>
   <div style="margin-right:20px;float:left;height:200px;width:120px;overflow-y:scroll;border:1px solid #88d"><img src="./images/knob70.png" style="border:2px solid #66d;margin:3px;"/></div>
   <p lang="en">The image specified with 'data-src' attribute can be a vertically stitched multi-frame image that represent knob rotation.
-    In this case, 'data-sprites' attribute should be the number of frames.<br/><br/>
+    In this case, 'data-sprites' attribute should be the number of frames - 1.<br/><br/>
     JKnobMan / WebKnobMan may be a help for making these stitched images,
   </p>
   <p lang="ja">'data-src' 属性で指定する画像として、ノブの回転をあらわす複数のフレームを繋いだ画像を使用できます。
@@ -400,13 +401,13 @@ GitHub repository : <a href="https://github.com/g200kg/input-knobs">https://gith
   </ul>
   <br clear="both"/>
 <code><pre>
-&lt;input type="range" class="input-knob" data-diameter="120" data-src="./images/knob70.png" data-sprites="101"/&gt;
-&lt;input type="range" class="input-knob" data-diameter="60" data-src="./images/knob70.png" data-sprites="101"/&gt;
-&lt;input type="range" class="input-knob" data-diameter="32" data-src="./images/knob70.png" data-sprites="101"/&gt;
+&lt;input type="range" class="input-knob" data-diameter="120" data-src="./images/knob70.png" data-sprites="100"/&gt;
+&lt;input type="range" class="input-knob" data-diameter="60" data-src="./images/knob70.png" data-sprites="100"/&gt;
+&lt;input type="range" class="input-knob" data-diameter="32" data-src="./images/knob70.png" data-sprites="100"/&gt;
 </pre></code>
-  <input type="range" class="input-knob" data-diameter="120" data-src="./images/knob70.png" data-sprites="101"/>
-  <input type="range" class="input-knob" data-diameter="60" data-src="./images/knob70.png" data-sprites="101"/>
-  <input type="range" class="input-knob" data-diameter="32" data-src="./images/knob70.png" data-sprites="101"/>
+  <input type="range" class="input-knob" data-diameter="120" data-src="./images/knob70.png" data-sprites="100"/>
+  <input type="range" class="input-knob" data-diameter="60" data-src="./images/knob70.png" data-sprites="100"/>
+  <input type="range" class="input-knob" data-diameter="32" data-src="./images/knob70.png" data-sprites="100"/>
   <hr/>
   <h4>Events Handling</h4>
 <p lang="en">'input' events are fired while dragging, 'change' event is fired when mouseup.<br/>
@@ -482,10 +483,10 @@ At this time, specifying a vertically long shape will automatically become a ver
 <p lang="ja">ノブの場合と同じようにフレームを接続した画像を 'data-src' 属性で指定して、'data-sprites' でコマ数を指定するとフルカスタムのスライダーを作る事もできます。</p>
 <code><pre>
 &lt;input type="range" class="input-slider" data-width="200" data-height="40"
-    data-sprites="51" data-src="./images/slider3.png"/&gt;
+    data-sprites="50" data-src="./images/slider3.png"/&gt;
 </pre></code>
 <div style="margin-right:20px;float:left;height:200px;width:250px;overflow-y:scroll;border:1px solid #88d"><img src="./images/slider3.png" style="border:2px solid #66d;margin:3px;"/></div>
-<input type="range" class="input-slider" data-width="200" data-height="40" data-sprites="51" data-src="./images/slider3.png"/>
+<input type="range" class="input-slider" data-width="200" data-height="40" data-sprites="50" data-src="./images/slider3.png"/>
 <br clear="both"/>
 <hr/>
 <h2>Switch Samples</h2>
