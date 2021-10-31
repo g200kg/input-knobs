@@ -200,6 +200,7 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
     };
     ik.pointerdown=(ev)=>{
       el.focus();
+      const evorg = ev;
       if(ev.touches)
         ev = ev.touches[0];
       let rc=el.getBoundingClientRect();
@@ -221,8 +222,8 @@ input[type=checkbox].input-switch:checked,input[type=radio].input-switch:checked
       document.addEventListener("touchend",ik.pointerup);
       document.addEventListener("touchcancel",ik.pointerup);
       document.addEventListener("touchstart",ik.preventScroll);
-      ev.preventDefault();
-      ev.stopPropagation();
+      evorg.preventDefault();
+      evorg.stopPropagation();
     };
     ik.pointermove=(ev)=>{
       let dv;
